@@ -1,7 +1,6 @@
 [user]
 	name = Alexander Epaneshnikov
 	email = aarnaarn2@gmail.com
-	signingkey = 6C7F7F22E0152A6FD5728592DAD6F3056C897266
 [rerere]
 	enabled = true
 [commit]
