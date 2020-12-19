@@ -26,11 +26,6 @@ compinit
 bindkey "eOH" beginning-of-line
 bindkey "eOF" end-of-line
 
-# prompt
-autoload -Uz promptinit
-promptinit
-prompt redhat
-
 # change $PATH.
 export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
 
@@ -45,8 +40,8 @@ fi
 ZSH_DISABLE_COMPFIX="true"
 # pacman do this for me
 DISABLE_AUTO_UPDATE="true"
-# disable theme
-ZSH_THEME=""
+# set theme
+ZSH_THEME="gentoo"
 # code
 VSCODE=code-insiders
 # disable ls color output
