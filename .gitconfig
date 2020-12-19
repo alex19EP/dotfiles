@@ -1,0 +1,21 @@
+[user]
+	name = Alexander Epaneshnikov
+	email = aarnaarn2@gmail.com
+	signingkey = 6C7F7F22E0152A6FD5728592DAD6F3056C897266
+[rerere]
+	enabled = true
+[commit]
+	gpgsign = true
+[log]
+	abbrevCommit = true
+[credential]
+	helper = /usr/lib/git-core/git-credential-libsecret
+[pull]
+	ff = only
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[init]
+	defaultBranch = main
