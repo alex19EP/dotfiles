@@ -5,8 +5,11 @@
 	enabled = true
 [commit]
 	gpgsign = true
+	status = true
+	verbose = true
 [log]
 	abbrevCommit = true
+	date = relative
 [credential]
 	helper = /usr/lib/git-core/git-credential-libsecret
 [pull]
