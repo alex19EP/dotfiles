@@ -37,7 +37,7 @@ if [[ ! -d $ZSH_CACHE_DIR ]]; then
 fi
 
 ## OhMyZsh configuration
-ZSH_DISABLE_COMPFIX="true"
+DISABLE_UNTRACKED_FILES_DIRTY=true
 # pacman do this for me
 DISABLE_AUTO_UPDATE="true"
 # set theme
@@ -50,6 +50,8 @@ DISABLE_LS_COLORS="true"
 DISABLE_AUTO_TITLE="true"
 # yep. i do typos
 ENABLE_CORRECTION="true"
+# set custom directory
+ZSH_CUSTOM=$HOME/omz-custom
 # OhMyZsh plugins
 plugins=(
   adb
@@ -111,8 +113,9 @@ fi
 source $ZSH/oh-my-zsh.sh
 
 # fix completions
-compdef _gh gh
 compdef _yadm yadm
+
+alias code=code-insiders
 
 eval $(thefuck --alias)
 
