@@ -68,7 +68,6 @@ plugins=(
   extract
   firewalld
   git
-  git-auto-fetch
   git-escape-magic
   git-extras
   gitignore
@@ -87,7 +86,6 @@ plugins=(
   sudo
   systemadmin
   systemd
-  themes
   tmux
   tmux-cssh
   vscode
@@ -116,8 +114,6 @@ source $ZSH/oh-my-zsh.sh
 compdef _yadm yadm
 
 alias code=code-insiders
-
-eval $(thefuck --alias)
 
 # disable stat
 zmodload -u zsh/stat
