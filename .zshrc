@@ -1,7 +1,7 @@
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=100000
-  setopt appendhistory autocd beep
+setopt appendhistory autocd beep
 bindkey -e
 
 zstyle ':completion:*' auto-description '%d'
@@ -31,7 +31,7 @@ export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
 
 # for OhMyZsh
 export ZSH=/usr/share/oh-my-zsh
-ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache
+ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
   mkdir $ZSH_CACHE_DIR
 fi
@@ -51,7 +51,7 @@ DISABLE_AUTO_TITLE="true"
 # yep. i do typos
 ENABLE_CORRECTION="true"
 # set custom directory
-ZSH_CUSTOM=$HOME/omz-custom
+ZSH_CUSTOM=$HOME/.config/oh-my-zsh
 # OhMyZsh plugins
 plugins=(
   adb
@@ -94,6 +94,8 @@ plugins=(
 
 emotty_set=nature
 PROJECT_PATHS=(~/building ~/repos)
+
+ZSH_TMUX_CONFIG="$HOME/.config/tmux/tmux.conf"
 
 # a11y fix
 setopt singlelinezle
