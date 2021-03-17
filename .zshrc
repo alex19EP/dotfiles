@@ -90,6 +90,7 @@ plugins=(
   tmux-cssh
   vscode
   zsh_reload
+  web-search
 )
 
 emotty_set=nature
