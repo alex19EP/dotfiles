@@ -91,6 +91,7 @@ plugins=(
   vscode
   zsh_reload
   web-search
+  fzf
 )
 
 emotty_set=nature
