@@ -193,9 +193,6 @@ PROJECT_PATHS=(~/building ~/repos)
 
 ZSH_TMUX_CONFIG="$HOME/.config/tmux/tmux.conf"
 
-# a11y fix
-setopt singlelinezle
-
 # editor
 export EDITOR="$(if [[ -n $DISPLAY ]]; then echo 'code-insiders -rw'; else echo 'nano'; fi)"
 
