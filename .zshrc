@@ -165,7 +165,6 @@ plugins=(
   git-escape-magic
   git-extras
   gitignore
-  git-prompt
   gradle
   history
   jump
