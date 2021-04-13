@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=5000
@@ -157,8 +164,6 @@ plugins=(
   copydir
   copyfile
   dircycle
-  emoji
-  emotty
   extract
   firewalld
   git
@@ -173,7 +178,6 @@ plugins=(
   pip
   pj
   profiles
-  rand-quote
   repo
   safe-paste
   sudo
@@ -203,6 +207,7 @@ else
 fi
 
 source $ZSH/oh-my-zsh.sh
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 if [ -f /usr/share/nnn/quitcd/quitcd.bash_zsh ]; then
     source /usr/share/nnn/quitcd/quitcd.bash_zsh
     export NNN_OPTS="EFrwx"
@@ -217,6 +222,5 @@ zmodload -u zsh/stat
 export USE_CCACHE=1
 export CCACHE_EXEC=/usr/bin/ccache
 
-# MOTD
-printf "===\n"
-quote
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.config/p10k/p10k.zsh ]] || source ~/.config/p10k/p10k.zsh
