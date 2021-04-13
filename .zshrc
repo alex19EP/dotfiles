@@ -203,6 +203,10 @@ else
 fi
 
 source $ZSH/oh-my-zsh.sh
+if [ -f /usr/share/nnn/quitcd/quitcd.bash_zsh ]; then
+    source /usr/share/nnn/quitcd/quitcd.bash_zsh
+    export NNN_OPTS="EFrwx"
+fi
 
 alias code=code-insiders
 
