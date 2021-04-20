@@ -173,7 +173,6 @@ plugins=(
   gradle
   history
   jump
-  magic-enter
   perms
   pip
   pj
