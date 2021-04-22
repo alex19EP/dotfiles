@@ -196,7 +196,7 @@ PROJECT_PATHS=(~/building ~/repos)
 ZSH_TMUX_CONFIG="$HOME/.config/tmux/tmux.conf"
 
 # editor
-export EDITOR="$(if [[ -n $DISPLAY ]]; then echo 'code-insiders -rw'; else echo 'nano'; fi)"
+export EDITOR="$(if [[ -n $DISPLAY || $TERM_PROGRAM = vscode ]]; then echo 'code-insiders -rw'; else echo 'nano'; fi)"
 
 # browser
 if [ -n "$DISPLAY" ]; then
