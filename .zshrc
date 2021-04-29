@@ -19,12 +19,11 @@ zstyle ':completion:*' group-name ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]} m:{[:lower:][:upper:]}={[:upper:][:lower:]}'
 zstyle ':completion:*' max-errors 1
-zstyle ':completion:*' menu select=long-list select=1
+zstyle ':completion:*' menu select=long-list select=0
 zstyle ':completion:*' prompt '%e'
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 zstyle ':completion:*' use-compctl true
 zstyle ':completion:*' verbose true
-zstyle ':completion:*' list-dirs-first true
 zstyle ':completion:*' list-grouped true
 zstyle ':completion:*' list-suffixes true
 
@@ -37,10 +36,6 @@ zstyle ':completion:*:*:-command-:*:*' ignored-patterns '_*'
 
 zstyle ':completion::complete:*' gain-privileges 1
 setopt COMPLETE_ALIASES GLOB_COMPLETE COMPLETE_IN_WORD LIST_PACKED
-
-
-autoload -Uz compinit
-compinit
 
 # Do not offer completion functions as corrections
 CORRECT_IGNORE='_*'
@@ -190,7 +185,6 @@ plugins=(
   fzf
 )
 
-emotty_set=nature
 PROJECT_PATHS=(~/building ~/repos)
 
 ZSH_TMUX_CONFIG="$HOME/.config/tmux/tmux.conf"
