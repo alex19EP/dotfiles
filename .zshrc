@@ -176,11 +176,14 @@ plugins=(
   systemd
   tmux
   tmux-cssh
-  vscode
   zsh_reload
   web-search
   fzf
 )
+
+if (( $+commands[code] || $+commands[code-insiders] )); then
+    plugins=($plugins vscode)
+fi
 
 PROJECT_PATHS=(~/building ~/repos)
 
