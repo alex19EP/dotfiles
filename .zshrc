@@ -121,9 +121,6 @@ if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
 	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
 fi
 
-# change $PATH.
-export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
-
 # for OhMyZsh
 export ZSH=/usr/share/oh-my-zsh
 ZSH_CACHE_DIR=$HOME/.cache/zsh/zcompcache
