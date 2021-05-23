@@ -217,9 +217,6 @@ fi
 
 alias code=code-insiders
 
-# disable stat
-zmodload -u zsh/stat
-
 # LOS building
 export USE_CCACHE=1
 export CCACHE_EXEC=/usr/bin/ccache
