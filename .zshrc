@@ -11,7 +11,7 @@ SAVEHIST=5000
 
 # for OhMyZsh
 export ZSH=/usr/share/oh-my-zsh
-ZSH_CACHE_DIR=$HOME/.cache/zsh/zcompcache
+ZSH_CACHE_DIR=$HOME/.cache/zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
   mkdir $ZSH_CACHE_DIR
 fi
@@ -19,7 +19,7 @@ fi
 ## OhMyZsh configuration
 DISABLE_UNTRACKED_FILES_DIRTY=true
 # pacman will do this for me
-DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE=true
 # set theme
 ZSH_THEME="gentoo"
 # code
@@ -27,9 +27,9 @@ VSCODE=code-insiders
 # help me trying to learn aliases
 ZSH_ALIAS_FINDER_AUTOMATIC=true
 # disable ls color output
-DISABLE_LS_COLORS="true"
+DISABLE_LS_COLORS=true
 # don't update terminal window-title
-DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE=true
 # set custom directory
 ZSH_CUSTOM=$HOME/.config/oh-my-zsh
 # OhMyZsh plugins
@@ -75,11 +75,9 @@ fi
 
 PROJECT_PATHS=(~/building ~/repos)
 ZSH_TMUX_CONFIG="$HOME/.config/tmux/tmux.conf"
+ZSH_COMPDUMP="${ZSH_CACHE_DIR}/zcompdump-$ZSH_VERSION"
 source $ZSH/oh-my-zsh.sh
 
-COMPDUMPFILE="${XDG_CACHE_HOME:-${HOME}/.cache}/zsh/zcompdump"
-zstyle ':completion::complete:*' cache-path "${XDG_CACHE_HOME:-${HOME}/.cache}/zsh/zcompcache"
-zstyle ':completion::complete:*' use-cache true
 zstyle ':completion:*' auto-description '%d'
 zstyle ':completion:*' completer _expand_alias _complete _correct _approximate
 zstyle ':completion:*' format 'completing %d'
