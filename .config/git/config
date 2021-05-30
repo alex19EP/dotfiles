@@ -14,6 +14,7 @@
 	helper = /usr/lib/git-core/git-credential-libsecret
 [pull]
 	ff = only
+	autostash = true
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
