@@ -65,7 +65,6 @@ plugins=(
   tmux
   tmux-cssh
   zsh_reload
-  web-search
   fzf
 )
 
