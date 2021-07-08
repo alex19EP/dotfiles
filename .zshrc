@@ -1,3 +1,28 @@
+### Added by Zinit's installer
+if [[ ! -f $ZINIT[HOME_DIR]/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    command chmod g-rwX "$ZINIT[HOME_DIR]"
+    command git clone https://github.com/zdharma/zinit "$ZINIT[HOME_DIR]/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+fi
+
+module_path+=( "$ZINIT[HOME_DIR]/bin/zmodules/Src" )
+source "$ZINIT[HOME_DIR]/bin/zinit.zsh"
+autoload -Uz _zinit
+zmodload zdharma/zplugin
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zinit-zsh/z-a-rust \
+    zinit-zsh/z-a-as-monitor \
+    zinit-zsh/z-a-patch-dl \
+    zinit-zsh/z-a-bin-gem-node
+
+### End of Zinit's installer chunk
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -5,77 +30,44 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+function command_not_found_handler {
+    local purple='\e[1;35m' bright='\e[0;1m' green='\e[1;32m' reset='\e[0m'
+    printf 'zsh: command not found: %s\n' "$1"
+    local entries=(
+        ${(f)"$(/usr/bin/pacman -F --machinereadable -- "/usr/bin/$1")"}
+    )
+    if (( ${#entries[@]} ))
+    then
+        printf "${bright}$1${reset} may be found in the following packages:\n"
+        local pkg
+        for entry in "${entries[@]}"
+        do
+            # (repo package version file)
+            local fields=(
+                ${(0)entry}
+            )
+            if [[ "$pkg" != "${fields[2]}" ]]
+            then
+                printf "${purple}%s/${bright}%s ${green}%s${reset}\n" "${fields[1]}" "${fields[2]}" "${fields[3]}"
+            fi
+            printf '    /%s\n' "${fields[4]}"
+            pkg="${fields[2]}"
+        done
+    fi
+}
+
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=5000
 
-# for OhMyZsh
-export ZSH=/usr/share/oh-my-zsh
-ZSH_CACHE_DIR=$HOME/.cache/zsh
-if [[ ! -d $ZSH_CACHE_DIR ]]; then
-  mkdir $ZSH_CACHE_DIR
-fi
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+autoload -Uz run-help
 
-## OhMyZsh configuration
-DISABLE_UNTRACKED_FILES_DIRTY=true
-# pacman will do this for me
-DISABLE_AUTO_UPDATE=true
-# set theme
-ZSH_THEME="gentoo"
 # code
 VSCODE=code-insiders
 # help me trying to learn aliases
 ZSH_ALIAS_FINDER_AUTOMATIC=true
-# disable ls color output
-DISABLE_LS_COLORS=true
-# don't update terminal window-title
-DISABLE_AUTO_TITLE=true
-# set custom directory
-ZSH_CUSTOM=$HOME/.config/oh-my-zsh
-# OhMyZsh plugins
-plugins=(
-  adb
-  alias-finder
-  archlinux
-  command-not-found
-  common-aliases
-  compleat
-  copybuffer
-  copydir
-  copyfile
-  dircycle
-  extract
-  firewalld
-  git
-  git-escape-magic
-  git-extras
-  gitignore
-  gradle
-  history
-  jump
-  perms
-  pip
-  pj
-  profiles
-  repo
-  safe-paste
-  sudo
-  systemadmin
-  systemd
-  tmux
-  tmux-cssh
-  zsh_reload
-  fzf
-)
-
-if (( $+commands[code] || $+commands[code-insiders] )); then
-    plugins=($plugins vscode)
-fi
-
-PROJECT_PATHS=(~/building ~/repos)
 ZSH_TMUX_CONFIG="$HOME/.config/tmux/tmux.conf"
-ZSH_COMPDUMP="${ZSH_CACHE_DIR}/zcompdump-$ZSH_VERSION"
-source $ZSH/oh-my-zsh.sh
 
 zstyle ':completion:*' auto-description '%d'
 zstyle ':completion:*' completer _expand_alias _complete _correct _approximate
@@ -93,12 +85,12 @@ zstyle ':completion:*' use-compctl true
 zstyle ':completion:*' verbose true
 zstyle ':completion:*' list-grouped true
 zstyle ':completion:*' list-suffixes true
-zstyle ':completion:*:manuals' separate-sections true
-zstyle ':completion:*:manuals.*' insert-sections true
 # Ignore completion functions (until the _ignored completer)
 zstyle ':completion:*:functions' ignored-patterns '_*'
 zstyle ':completion:*:*:-command-:*:*' ignored-patterns '_*'
 zstyle ':completion::complete:*' gain-privileges 1
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
 
 setopt APPENDHISTORY SHARE_HISTORY BEEP
 setopt COMPLETE_ALIASES GLOB_COMPLETE COMPLETE_IN_WORD LIST_PACKED
@@ -196,28 +188,33 @@ if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
 	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
 fi
 
-# editor
-export EDITOR="$(if [[ -n $DISPLAY || $TERM_PROGRAM = vscode ]]; then echo 'code-insiders -rw'; else echo 'nano'; fi)"
-
-# browser
-if [ -n "$DISPLAY" ]; then
-    export BROWSER="firefox --new-window"
-else
-    export BROWSER=links
-fi
-
-# nnn file manager
-if [ -f /usr/share/nnn/quitcd/quitcd.bash_zsh ]; then
-    source /usr/share/nnn/quitcd/quitcd.bash_zsh
-    export NNN_OPTS="EFrwx"
-fi
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+source /usr/share/nnn/quitcd/quitcd.bash_zsh
 
 alias code=code-insiders
 
-# LOS building
-export USE_CCACHE=1
-export CCACHE_EXEC=/usr/bin/ccache
+# plugins
+zinit snippet OMZP::alias-finder
+zinit snippet OMZP::common-aliases
+zinit snippet OMZP::extract
+zinit snippet OMZP::git
+zinit snippet OMZP::gitignore
+zinit snippet OMZP::gradle
+zinit snippet OMZP::history
+zinit snippet OMZP::pip
+zinit snippet OMZP::repo
+zinit snippet OMZP::safe-paste
+zinit snippet OMZP::sudo
+zinit snippet OMZP::systemadmin
+zinit snippet OMZP::tmux
+if (( $+commands[code] || $+commands[code-insiders] )); then
+    zinit snippet OMZP::vscode
+fi
+zinit ice depth=1; zinit light romkatv/powerlevel10k
 
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+autoload -Uz compinit
+compinit
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.config/p10k/p10k.zsh ]] || source ~/.config/p10k/p10k.zsh
