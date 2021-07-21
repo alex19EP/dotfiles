@@ -22,12 +22,13 @@ export ZPFX=$ZINIT[HOME_DIR]/polaris
 
 export AUR_PAGER=nnn
 # editor
-export EDITOR="$(if [[ -n $DISPLAY || $TERM_PROGRAM = vscode ]]; then echo 'code-insiders -rw'; else echo 'nano'; fi)"
+export EDITOR=nano
+export VISUAL="$(if [[ -n $DISPLAY || $TERM_PROGRAM = vscode ]]; then echo 'code-insiders -rw'; else echo 'nano'; fi)"
 # browser
 if [ -n "$DISPLAY" ]; then
     export BROWSER="firefox"
 else
-    export BROWSER=links
+    export BROWSER=elinks
 fi
 # nnn file manager
 export NNN_OPTS='EFHuwx'

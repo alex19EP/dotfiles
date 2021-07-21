@@ -67,7 +67,6 @@ autoload -Uz run-help
 VSCODE=code-insiders
 # help me trying to learn aliases
 ZSH_ALIAS_FINDER_AUTOMATIC=true
-ZSH_TMUX_CONFIG="$HOME/.config/tmux/tmux.conf"
 
 zstyle ':completion:*' auto-description '%d'
 zstyle ':completion:*' completer _expand_alias _complete _correct _approximate
@@ -85,6 +84,7 @@ zstyle ':completion:*' use-compctl true
 zstyle ':completion:*' verbose true
 zstyle ':completion:*' list-grouped true
 zstyle ':completion:*' list-suffixes true
+zstyle ':completion:*' rehash true
 # Ignore completion functions (until the _ignored completer)
 zstyle ':completion:*:functions' ignored-patterns '_*'
 zstyle ':completion:*:*:-command-:*:*' ignored-patterns '_*'
@@ -94,6 +94,8 @@ zle -N down-line-or-beginning-search
 
 setopt APPENDHISTORY SHARE_HISTORY BEEP
 setopt COMPLETE_ALIASES GLOB_COMPLETE COMPLETE_IN_WORD LIST_PACKED
+setopt auto_param_slash     # if completed parameter is a directory, add a trailing slash
+setopt always_to_end        # move cursor to the end of a completed word
 # whenever a command completion is attempted, make sure the entire command path
 # is hashed first.
 setopt HASH_LIST_ALL
@@ -134,8 +136,7 @@ setopt PROMPT_SUBST
 setopt AUTO_CD
 setopt PUSHD_IGNORE_DUPS
 
-## try to avoid the 'zsh: no matches found...'
-setopt NONOMATCH
+setopt NOMATCH
 
 ## Key bindings
 
