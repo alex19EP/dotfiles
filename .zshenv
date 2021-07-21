@@ -30,8 +30,8 @@ else
     export BROWSER=links
 fi
 # nnn file manager
-export NNN_OPTS='EFHuw'
-export NNN_PLUG='S:suedit;U:upgrade;l:-!git log;p:-!less -iR $nnn*'
+export NNN_OPTS='EFHuwx'
+export NNN_PLUG='S:suedit;l:-!git log;p:-!less -iR $nnn*'
 # LOS building
 export USE_CCACHE=1
 export CCACHE_EXEC=/usr/bin/ccache
