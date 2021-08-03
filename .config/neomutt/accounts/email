@@ -1,0 +1,11 @@
+set folder = ~/.local/share/mail/personal
+set spoolfile = "+Inbox"
+set record = "+Sent"
+set postponed = "+Drafts"
+set trash = "+Trash"
+set signature = $my_cfgdir/accounts/general.signature
+
+set from = email@alex19ep.me
+set use_from = yes
+alternates email@alex19ep.me
+set crypt_autosign = yes

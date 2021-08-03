@@ -1,0 +1,64 @@
+Create Both
+Expunge Both
+CopyArrivalDate yes
+SyncState *
+
+# gmail
+IMAPAccount gmail
+Host imap.gmail.com
+User aarnaarn2@gmail.com
+PassCmd "bw --nointeraction get item google.com | jq -r '.fields | .[0].value'"
+SSLType IMAPS
+
+# personal
+IMAPAccount personal
+Host mail.alex19ep.me
+User email@alex19ep.me
+PassCmd "bw --nointeraction get password 25e9e9dc-42c2-4a17-ad81-ad45015d27dc"
+SSLType IMAPS
+
+# admin
+IMAPAccount admin
+Host mail.alex19ep.me
+User admin@alex19ep.me
+PassCmd "bw --nointeraction get password 39cf143e-ccf0-4c8e-b425-ad1a00f2b2c3"
+SSLType IMAPS
+
+IMAPStore gmail-remote
+Account gmail
+
+IMAPStore personal-remote
+Account personal
+
+IMAPStore admin-remote
+Account admin
+
+MaildirStore gmail-local
+SubFolders Verbatim
+Path ~/.local/share/mail/gmail/
+Inbox ~/.local/share/mail/gmail/Inbox
+
+MaildirStore personal-local
+SubFolders Verbatim
+Path ~/.local/share/mail/personal/
+Inbox ~/.local/share/mail/personal/Inbox
+
+MaildirStore admin-local
+SubFolders Verbatim
+Path ~/.local/share/mail/admin/
+Inbox ~/.local/share/mail/admin/Inbox
+
+Channel gmail
+Far :gmail-remote:
+Near :gmail-local:
+Patterns *
+
+Channel personal
+Far :personal-remote:
+Near :personal-local:
+Patterns *
+
+Channel admin
+Far :admin-remote:
+Near :admin-local:
+Patterns *

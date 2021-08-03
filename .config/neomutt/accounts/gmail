@@ -1,0 +1,10 @@
+set folder = ~/.local/share/mail/gmail
+set spoolfile = "+Inbox"
+unset record
+set postponed = "+[Gmail]/Drafts"
+set trash = "+[Gmail]/Trash"
+set signature = $my_cfgdir/accounts/general.signature
+
+set from = aarnaarn2@gmail.com
+alternates aarnaarn2@gmail.com
+unset crypt_autosign

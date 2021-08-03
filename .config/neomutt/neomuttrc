@@ -1,0 +1,43 @@
+set my_cfgdir = $HOME/.config/neomutt
+set mailcap_path = $my_cfgdir/mailcap
+source $my_cfgdir/sidebar
+source $my_cfgdir/gpg.rc
+set mbox_type = Maildir
+set folder = ~/.local/share/mail
+set nm_default_uri = "notmuch://~/.local/share/mail"
+set send_charset = "utf-8"
+auto_view text/html                                      # view html automatically
+alternative_order text/plain text/enriched text/html     # save html for last
+set header_cache_backend = lmdb
+set header_cache = ~/.cache/neomutt
+set message_cachedir = ~/.cache/neomutt
+set sendmail = "/usr/bin/msmtp"
+set user_agent
+set forward_format = "Fwd: %s"
+set pager_context = 1
+set realname = "Alexander Epaneshnikov"
+set use_from = yes
+set envelope_from=yes
+set fast_reply=yes
+set include=yes
+set pager_stop
+set status_on_top
+set beep_new
+unset markers
+set delete
+set help = no
+set sleep_time = 0
+set edit_headers=yes
+
+# gmail
+folder-hook gmail/* source $my_cfgdir/accounts/gmail
+macro index,pager <f3> '<sync-mailbox><enter-command>source $my_cfgdir/accounts/gmail<enter><change-folder>!<enter>'
+
+# personal
+source $my_cfgdir/accounts/email
+folder-hook $folder source $my_cfgdir/accounts/email
+macro index,pager <f2> '<sync-mailbox><enter-command>source $my_cfgdir/accounts/email<enter><change-folder>!<enter>'
+
+# admin
+folder-hook admin/* source $my_cfgdir/accounts/admin
+macro index,pager <f4> '<sync-mailbox><enter-command>source $my_cfgdir/accounts/admin<enter><change-folder>!<enter>'

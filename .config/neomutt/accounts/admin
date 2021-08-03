@@ -1,0 +1,3 @@
+set folder = ~/.local/share/mail/admin
+set spoolfile = "+Inbox"
+set trash = "+Trash"
