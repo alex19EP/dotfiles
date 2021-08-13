@@ -38,6 +38,10 @@ source $my_cfgdir/accounts/email
 folder-hook $folder source $my_cfgdir/accounts/email
 macro index,pager <f2> '<sync-mailbox><enter-command>source $my_cfgdir/accounts/email<enter><change-folder>!<enter>'
 
+# arch linux
+folder-hook arch/* source $my_cfgdir/accounts/arch
+macro index,pager <f4> '<sync-mailbox><enter-command>source $my_cfgdir/accounts/arch<enter><change-folder>!<enter>'
+
 # admin
 folder-hook admin/* source $my_cfgdir/accounts/admin
-macro index,pager <f4> '<sync-mailbox><enter-command>source $my_cfgdir/accounts/admin<enter><change-folder>!<enter>'
+macro index,pager <f5> '<sync-mailbox><enter-command>source $my_cfgdir/accounts/admin<enter><change-folder>!<enter>'

@@ -17,3 +17,10 @@ host           mail.alex19ep.me
 from           email@alex19ep.me
 user           email@alex19ep.me
 passwordeval   "bw --nointeraction get password 25e9e9dc-42c2-4a17-ad81-ad45015d27dc"
+
+# arch linux
+account        arch
+host           mail.archlinux.org
+from           alex19ep@archlinux.org
+user           alex19ep@archlinux.org
+passwordeval   "bw --nointeraction get password 9554f652-19c9-4aa5-aa4d-ad83013f0dc6"

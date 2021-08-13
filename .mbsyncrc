@@ -24,6 +24,13 @@ User admin@alex19ep.me
 PassCmd "bw --nointeraction get password 39cf143e-ccf0-4c8e-b425-ad1a00f2b2c3"
 SSLType IMAPS
 
+# arch linux
+IMAPAccount arch
+Host mail.archlinux.org
+User alex19ep@archlinux.org
+PassCmd "bw --nointeraction get password 9554f652-19c9-4aa5-aa4d-ad83013f0dc6"
+SSLType IMAPS
+
 IMAPStore gmail-remote
 Account gmail
 
@@ -32,6 +39,9 @@ Account personal
 
 IMAPStore admin-remote
 Account admin
+
+IMAPStore arch-remote
+Account arch
 
 MaildirStore gmail-local
 SubFolders Verbatim
@@ -48,6 +58,11 @@ SubFolders Verbatim
 Path ~/.local/share/mail/admin/
 Inbox ~/.local/share/mail/admin/Inbox
 
+MaildirStore arch-local
+SubFolders Verbatim
+Path ~/.local/share/mail/arch/
+Inbox ~/.local/share/mail/arch/Inbox
+
 Channel gmail
 Far :gmail-remote:
 Near :gmail-local:
@@ -61,4 +76,9 @@ Patterns *
 Channel admin
 Far :admin-remote:
 Near :admin-local:
+Patterns *
+
+Channel arch
+Far :arch-remote:
+Near :arch-local:
 Patterns *
