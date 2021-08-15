@@ -68,6 +68,7 @@ VSCODE=code-insiders
 # help me trying to learn aliases
 ZSH_ALIAS_FINDER_AUTOMATIC=true
 
+zstyle ':prezto:module:terminal' auto-title 'yes'
 zstyle ':completion:*' auto-description '%d'
 zstyle ':completion:*' completer _expand_alias _complete _correct _approximate
 zstyle ':completion:*' format 'completing %d'
@@ -196,19 +197,21 @@ source /usr/share/nnn/quitcd/quitcd.bash_zsh
 alias code=code-insiders
 
 # plugins
-zinit snippet OMZP::alias-finder
-zinit snippet OMZP::common-aliases
-zinit snippet OMZP::extract
-zinit snippet OMZP::git
-zinit snippet OMZP::gitignore
-zinit snippet OMZP::gradle
-zinit snippet OMZP::history
-zinit snippet OMZP::pip
-zinit snippet OMZP::repo
-zinit snippet OMZP::safe-paste
-zinit snippet OMZP::sudo
-zinit snippet OMZP::systemadmin
-zinit snippet OMZP::tmux
+zinit wait lucid for \
+           PZTM::pacman \
+           PZTM::terminal \
+           OMZP::alias-finder \
+           OMZP::git \
+           OMZP::gitignore \
+           OMZP::gradle \
+           OMZP::history \
+           OMZP::pip \
+           OMZP::repo \
+           OMZP::safe-paste \
+           OMZP::sudo \
+           OMZP::systemadmin \
+      as"completion" \
+           OMZP::adb/_adb
 if (( $+commands[code] || $+commands[code-insiders] )); then
     zinit snippet OMZP::vscode
 fi
