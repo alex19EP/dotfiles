@@ -183,16 +183,20 @@ key[Control-Right]="${terminfo[kRIT5]}"
 # Finally, make sure the terminal is in application mode, when zle is active. Only then are the values from $terminfo valid.
 # https://www.zsh.org/mla/users/2010/msg00065.html
 if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
-	autoload -Uz add-zle-hook-widget
-	function zle_application_mode_start () { echoti smkx }
-	function zle_application_mode_stop () { echoti rmkx }
-	add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
-	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
+    autoload -Uz add-zle-hook-widget
+    function zle_application_mode_start () { echoti smkx }
+    function zle_application_mode_stop () { echoti rmkx }
+    add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
+    add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
 fi
 
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
-source /usr/share/nnn/quitcd/quitcd.bash_zsh
+if [[ -f /usr/share/fzf/key-bindings.zsh ]]; then
+    source /usr/share/fzf/key-bindings.zsh
+    source /usr/share/fzf/completion.zsh
+fi
+if [[ -f /usr/share/nnn/quitcd/quitcd.bash_zsh ]]; then
+    source /usr/share/nnn/quitcd/quitcd.bash_zsh
+fi
 
 alias code=code-insiders
 
