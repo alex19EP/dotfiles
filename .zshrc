@@ -10,7 +10,9 @@ fi
 module_path+=( "$ZINIT[HOME_DIR]/bin/zmodules/Src" )
 source "$ZINIT[HOME_DIR]/bin/zinit.zsh"
 autoload -Uz _zinit
-zmodload zdharma/zplugin
+if [[ -f $ZINIT[HOME_DIR]/bin/zmodules/Src/zdharma/zplugin.so ]]; then
+    zmodload zdharma/zplugin
+fi
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
 # Load a few important annexes, without Turbo
