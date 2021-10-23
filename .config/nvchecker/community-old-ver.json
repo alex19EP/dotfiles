@@ -1,0 +1,23 @@
+{
+  "bitwarden": "1.28.3",
+  "bitwarden-cli": "1.18.1",
+  "esh": "0.3.1",
+  "espeak-ng": "1.50",
+  "espeakup": "v0.90",
+  "glulxe-term": "0.5.4",
+  "libglkterm": "1.0.4",
+  "lightdm-slick-greeter": "1.5.4",
+  "magic-wormhole": "0.12.0",
+  "pcaudiolib": "1.2",
+  "python-frozendict": "2.0.6",
+  "python-hkdf": "0.0.3",
+  "python-j2cli": "0.3.12b",
+  "python-magic-wormhole-mailbox-server": "0.4.1",
+  "python-magic-wormhole-transit-relay": "0.2.1",
+  "python-signedjson": "1.1.1",
+  "python-spake2": "0.8",
+  "python-txtorcon": "21.1.0",
+  "rhvoice": "1.4.2",
+  "s3cmd": "2.2.0",
+  "yadm": "3.1.1"
+}
