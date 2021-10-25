@@ -4,7 +4,7 @@ source $my_cfgdir/sidebar
 source $my_cfgdir/gpg.rc
 set mbox_type = Maildir
 set folder = ~/.local/share/mail
-set nm_default_uri = "notmuch://~/.local/share/mail"
+set nm_default_uri = "notmuch:///home/alex/.local/share/mail"
 set send_charset = "utf-8"
 auto_view text/html                                      # view html automatically
 alternative_order text/plain text/enriched text/html     # save html for last
@@ -17,9 +17,9 @@ set forward_format = "Fwd: %s"
 set pager_context = 1
 set realname = "Alexander Epaneshnikov"
 set use_from = yes
-set envelope_from=yes
-set fast_reply=yes
-set include=yes
+set envelope_from= yes
+set fast_reply= yes
+set include= yes
 set pager_stop
 set status_on_top
 set beep_new
@@ -27,7 +27,8 @@ unset markers
 set delete
 set help = no
 set sleep_time = 0
-set edit_headers=yes
+set edit_headers= yes
+set auto_tag = yes
 
 # gmail
 folder-hook gmail/* source $my_cfgdir/accounts/gmail
