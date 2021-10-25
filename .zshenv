@@ -7,6 +7,7 @@ function makedir {
 
 ZSH_CACHE_DIR=$HOME/.cache/zsh
 makedir $ZSH_CACHE_DIR
+makedir $HOME/.cache/spotifyd
 # zinit
 declare -A ZINIT
 export ZINIT[HOME_DIR]=$HOME/.local/lib/zinit
@@ -39,3 +40,6 @@ export CCACHE_EXEC=/usr/bin/ccache
 
 # .local/bin
 export PATH="$HOME/.local/bin:$PATH"
+
+# cargo
+export PATH="$HOME/.cargo/bin:$PATH"
