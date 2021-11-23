@@ -2,7 +2,7 @@
 if [[ ! -f $ZINIT[HOME_DIR]/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
     command chmod g-rwX "$ZINIT[HOME_DIR]"
-    command git clone https://github.com/zdharma/zinit "$ZINIT[HOME_DIR]/bin" && \
+    command git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT[HOME_DIR]/bin" && \
         print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
         print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
@@ -18,10 +18,10 @@ fi
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
 zinit light-mode for \
-    zinit-zsh/z-a-rust \
-    zinit-zsh/z-a-as-monitor \
-    zinit-zsh/z-a-patch-dl \
-    zinit-zsh/z-a-bin-gem-node
+    zdharma-continuum/z-a-rust \
+    zdharma-continuum/z-a-as-monitor \
+    zdharma-continuum/z-a-patch-dl \
+    zdharma-continuum/z-a-bin-gem-node
 
 ### End of Zinit's installer chunk
 
@@ -70,7 +70,6 @@ VSCODE=code-insiders
 # help me trying to learn aliases
 ZSH_ALIAS_FINDER_AUTOMATIC=true
 
-zstyle ':prezto:module:terminal' auto-title 'yes'
 zstyle ':completion:*' auto-description '%d'
 zstyle ':completion:*' completer _expand_alias _complete _correct _approximate
 zstyle ':completion:*' format 'completing %d'
@@ -204,8 +203,6 @@ alias code=code-insiders
 
 # plugins
 zinit wait lucid for \
-           PZTM::pacman \
-           PZTM::terminal \
            OMZP::alias-finder \
            OMZP::git \
            OMZP::gitignore \
