@@ -32,7 +32,7 @@ else
     export BROWSER=elinks
 fi
 # nnn file manager
-export NNN_OPTS='EFHuwx'
+export NNN_OPTS='EFHux'
 export NNN_PLUG='S:suedit;l:-!git log;p:-!less -iR $nnn*'
 # LOS building
 export USE_CCACHE=1
