@@ -1,6 +1,6 @@
-SURFRAW_text_browser=elinks
+SURFRAW_text_browser=w3m
 SURFRAW_graphical_browser=firefox
-SURFRAW_graphical_remote=yes
+SURFRAW_graphical_remote=no
 SURFRAW_new_window=yes
 SURFRAW_results=10
 SURFRAW_google_results=10
