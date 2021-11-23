@@ -1,4 +1,4 @@
 #!/bin/sh
 export ARCHWEB_USERNAME=$(bw --nointeraction get username https://archlinux.org)
 export ARCHWEB_PASSWORD=$(bw --nointeraction get password https://archlinux.org)
-exec /bin/signoff $@
+exec /bin/signoff --nocolor $@
