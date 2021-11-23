@@ -29,7 +29,7 @@ export VISUAL="$(if [[ -n $DISPLAY || $TERM_PROGRAM = vscode ]]; then echo 'code
 if [ -n "$DISPLAY" ]; then
     export BROWSER="firefox"
 else
-    export BROWSER=elinks
+    export BROWSER=w3m
 fi
 # nnn file manager
 export NNN_OPTS='EFHux'
