@@ -24,6 +24,8 @@ set pager_stop
 set status_on_top
 set beep_new
 unset markers
+unset mark_old
+unset confirmappend
 set delete
 set help = no
 set sleep_time = 0
