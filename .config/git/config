@@ -22,3 +22,33 @@
 	process = git-lfs filter-process
 [init]
 	defaultBranch = main
+[pack]
+	writeReverseIndex = true
+[maintenance]
+	repo = /home/alex/repos/RHVoice
+	repo = /home/alex/repos/Cataclysm-DDA
+	repo = /home/alex/repos/pkgbuilds
+	repo = /home/alex/repos/archiso
+	repo = /home/alex/repos/espeak-ng
+[push]
+	default = upstream
+	followTags = true
+	recurseSubmodules = on-demand
+[rebase]
+	autoSquash = true
+	autoStash = true
+	stat = true
+[help]
+	autoCorrect = prompt
+[checkout]
+	guess = true
+	workers = -1
+[diff]
+	mnemonicprefix = true
+[merge]
+	directoryRenames = true
+[status]
+	showStash = true
+[submodule]
+	recurse = true
+	fetchJobs = 0
