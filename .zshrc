@@ -67,8 +67,6 @@ autoload -Uz run-help
 
 # code
 VSCODE=code-insiders
-# help me trying to learn aliases
-ZSH_ALIAS_FINDER_AUTOMATIC=true
 
 zstyle ':completion:*' auto-description '%d'
 zstyle ':completion:*' completer _expand_alias _complete _correct _approximate
@@ -121,6 +119,7 @@ setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY
 setopt EXTENDED_HISTORY
 setopt INC_APPEND_HISTORY_TIME
+setopt SHARE_HISTORY
 
 # Input/Output
 setopt CORRECT
@@ -137,6 +136,7 @@ setopt PROMPT_SUBST
 # Changing Directories
 setopt AUTO_CD
 setopt PUSHD_IGNORE_DUPS
+setopt PUSHD_TO_HOME
 
 setopt NOMATCH
 
@@ -203,7 +203,6 @@ alias code=code-insiders
 
 # plugins
 zinit wait lucid for \
-           OMZP::alias-finder \
            OMZP::git \
            OMZP::gitignore \
            OMZP::gradle \
