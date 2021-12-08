@@ -7,6 +7,7 @@ function makedir {
 
 ZSH_CACHE_DIR=$HOME/.cache/zsh
 makedir $ZSH_CACHE_DIR
+makedir $HOME/.ssh/control
 makedir $HOME/.cache/spotifyd
 # zinit
 declare -A ZINIT
