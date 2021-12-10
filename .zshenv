@@ -35,9 +35,6 @@ fi
 # nnn file manager
 export NNN_OPTS='EFHux'
 export NNN_PLUG='S:suedit;l:-!git log;p:-!less -iR $nnn*'
-# LOS building
-export USE_CCACHE=1
-export CCACHE_EXEC=/usr/bin/ccache
 
 # .local/bin
 export PATH="$HOME/.local/bin:$PATH"
