@@ -30,6 +30,7 @@
 	repo = /home/alex/repos/pkgbuilds
 	repo = /home/alex/repos/archiso
 	repo = /home/alex/repos/espeak-ng
+	repo = /home/alex/repos/linux-stable
 [push]
 	default = upstream
 	followTags = true
@@ -52,3 +53,8 @@
 [submodule]
 	recurse = true
 	fetchJobs = 0
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[core]
+	untrackedCache = true
