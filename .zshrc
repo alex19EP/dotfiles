@@ -58,7 +58,7 @@ function command_not_found_handler {
     fi
 }
 
-HISTFILE=~/.histfile
+HISTFILE=~/.local/share/zsh/histfile
 HISTSIZE=10000
 SAVEHIST=5000
 
@@ -84,7 +84,6 @@ zstyle ':completion:*' use-compctl true
 zstyle ':completion:*' verbose true
 zstyle ':completion:*' list-grouped true
 zstyle ':completion:*' list-suffixes true
-zstyle ':completion:*' rehash true
 # Ignore completion functions (until the _ignored completer)
 zstyle ':completion:*:functions' ignored-patterns '_*'
 zstyle ':completion:*:*:-command-:*:*' ignored-patterns '_*'
