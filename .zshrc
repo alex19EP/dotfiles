@@ -221,7 +221,7 @@ fi
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 autoload -Uz compinit
-compinit
+compinit -d $ZINIT[ZCOMPDUMP_PATH]
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.config/p10k/p10k.zsh ]] || source ~/.config/p10k/p10k.zsh
