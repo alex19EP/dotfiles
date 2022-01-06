@@ -29,6 +29,7 @@ zinit light-mode for \
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 (( ${+commands[direnv]} )) && emulate zsh -c "$(direnv export zsh)"
+(( ${+commands[zoxide]} )) && emulate zsh -c "$(zoxide init zsh)"
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
