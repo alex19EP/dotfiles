@@ -129,3 +129,8 @@ use_latest_tag = true
 source = "github"
 github = "andreafrancia/trash-cli"
 use_latest_tag = true
+
+[glab]
+source = "github"
+github = "profclems/glab"
+use_latest_tag = true
