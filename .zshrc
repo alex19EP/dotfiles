@@ -7,21 +7,13 @@ if [[ ! -f $ZINIT[HOME_DIR]/bin/zinit.zsh ]]; then
         print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
 
-module_path+=( "$ZINIT[HOME_DIR]/bin/zmodules/Src" )
+module_path+=( "$HOME/.local/lib/zinit/module/Src" )
 source "$ZINIT[HOME_DIR]/bin/zinit.zsh"
 autoload -Uz _zinit
-if [[ -f $ZINIT[HOME_DIR]/bin/zmodules/Src/zdharma/zplugin.so ]]; then
-    zmodload zdharma/zplugin
+if [[ -f "$HOME/.local/lib/zinit/module/Src/zdharma_continuum/zinit.so" ]]; then
+    zmodload zdharma_continuum/zinit
 fi
 (( ${+_comps} )) && _comps[zinit]=_zinit
-
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-zinit light-mode for \
-    zdharma-continuum/z-a-rust \
-    zdharma-continuum/z-a-as-monitor \
-    zdharma-continuum/z-a-patch-dl \
-    zdharma-continuum/z-a-bin-gem-node
 
 ### End of Zinit's installer chunk
 
