@@ -1,26 +1,13 @@
 typeset -U PATH path
-function makedir {
-	if [[ ! -d $1 ]]; then
-		mkdir -p $1
-	fi
-}
 
 ZSH_CACHE_DIR=$HOME/.cache/zsh
-makedir $ZSH_CACHE_DIR
-makedir $HOME/.local/share/zsh
-makedir $HOME/.ssh/control
-makedir $HOME/.cache/spotifyd
 
 # zinit
 declare -A ZINIT
 export ZINIT[HOME_DIR]=$HOME/.local/lib/zinit
-makedir $ZINIT[HOME_DIR]
 export ZINIT[PLUGINS_DIR]=$ZINIT[HOME_DIR]/plugins
-makedir $ZINIT[PLUGINS_DIR]
 export ZINIT[COMPLETIONS_DIR]=$ZINIT[HOME_DIR]/completions
-makedir $ZINIT[COMPLETIONS_DIR]
 export ZINIT[SNIPPETS_DIR]=$ZINIT[HOME_DIR]/snippets
-makedir $ZINIT[SNIPPETS_DIR]
 export ZINIT[ZCOMPDUMP_PATH]="${ZSH_CACHE_DIR}/zcompdump-$ZSH_VERSION"
 export ZPFX=$ZINIT[HOME_DIR]/polaris
 
