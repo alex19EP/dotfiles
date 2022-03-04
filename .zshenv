@@ -23,7 +23,9 @@ else
 fi
 # nnn file manager
 export NNN_OPTS='EFHux'
-export NNN_PLUG='S:suedit;l:-!git log;p:-!less -iR $nnn*'
+export NNN_PLUG='z:autojump;S:suedit;l:-!git log;p:-!less -iR $nnn*'
+export NNN_BMS='d:~/Documents;D:~/Downloads/;r:~/repos/'
+export NNN_TRASH=1
 
 # .local/bin
 export PATH="$HOME/.local/bin:$PATH"
