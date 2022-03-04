@@ -206,6 +206,7 @@ zinit wait lucid for \
            OMZP::safe-paste \
            OMZP::sudo \
            OMZP::systemadmin \
+           mellbourn/zabb \
       as"completion" \
            OMZP::adb/_adb
 if (( $+commands[code] || $+commands[code-insiders] )); then
