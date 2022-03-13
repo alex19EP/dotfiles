@@ -14,21 +14,21 @@ SSLType IMAPS
 IMAPAccount personal
 Host mail.alex19ep.me
 User email@alex19ep.me
-PassCmd "bw --nointeraction get password 25e9e9dc-42c2-4a17-ad81-ad45015d27dc"
+PassCmd "bw --nointeraction get password 'my email'"
 SSLType IMAPS
 
 # admin
 IMAPAccount admin
 Host mail.alex19ep.me
 User admin@alex19ep.me
-PassCmd "bw --nointeraction get password 39cf143e-ccf0-4c8e-b425-ad1a00f2b2c3"
+PassCmd "bw --nointeraction get password 'admin email'"
 SSLType IMAPS
 
 # arch linux
 IMAPAccount arch
 Host mail.archlinux.org
 User alex19ep@archlinux.org
-PassCmd "bw --nointeraction get password 9554f652-19c9-4aa5-aa4d-ad83013f0dc6"
+PassCmd "bw --nointeraction get password 'arch email'"
 SSLType IMAPS
 
 IMAPStore gmail-remote
