@@ -1,32 +1,10 @@
+text/html;                      /usr/bin/chromium %s; test=test -n "$DISPLAY"; nametemplate=%s.html; x-neomutt-keep
 text/html;               /usr/bin/w3m -dump -T text/html %s; needsterminal; copiousoutput
 application/pdf          ; /usr/bin/zathura %s                             ; copiousoutput
 image/*                  ; /usr/bin/sxiv %s                              ; copiousoutput
 audio/*                  ; /usr/bin/mpv %s                             ; copiousoutput
 video/*                  ; /usr/bin/mpv %s                             ; copiousoutput
-
-text/html;                      /usr/bin/chromium %s
-text/plain;                     urxvt -name attach -e /usr/bin/vim -f %s;
-text/plain;charset=us-ascii	less; needsterminal
-#text/*;                         less
-application/msword;             libreoffice %s; copiousoutput
-application/vnd.msword;         libreoffice %s copiousoutput
-application/excel;              libreoffice %s; copiousoutput
-application/msexcel;            libreoffice %s; copiousoutput
-application/vnd.ms-excel;       libreoffice %s; copiousoutput
-application/x-excel;            libreoffice %s; copiousoutput
-application/x-msexcel;          libreoffice %s; copiousoutput
-application/vnd.ms-powerpoint;  libreoffice %s; copiousoutput
-application/x-mspowerpoint;     libreoffice %s; copiousoutput
-application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; libreoffice '%s';  description="Office Open XML Spreadsheet"; nametemplate=%s.xlsx
-application/ppt;                libreoffice %s; copiousoutput
-application/zip;                file-roller %s; copiousoutput
 application/x-rar;              file-roller %s; copiousoutput
-application/msword;		libreoffice %s; copiousoutput
-application/vnd.msword;         libreoffice %s; copiousoutput
-application/postscript;		zathura %s; copiousoutput
-application/rtf;		rtf2text %s; copiousoutput
-application/ms-tnef;		mutt_bgrun tnef -w %s
-application/octet-stream;       less; needsterminal
 application/x-7z-compressed; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
 application/x-7z-compressed-tar; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
 application/x-ace; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY" -a -x /usr/bin/unace
@@ -77,4 +55,3 @@ application/x-zip-compressed; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
 application/x-zoo; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY" -a -x /usr/bin/zoo
 application/zip; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
 multipart/x-zip; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
-*;                              less %s;
