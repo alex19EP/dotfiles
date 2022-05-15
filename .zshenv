@@ -19,6 +19,9 @@ export AUR_PAGER=nnn
 # editor
 export EDITOR=nano
 export VISUAL="$(if [[ -n $DISPLAY || $TERM_PROGRAM = vscode ]]; then echo 'code-insiders -rw'; else echo 'nano'; fi)"
+export PAGER='less'
+export LESS='-giMRS'
+
 # browser
 if [ -n "$DISPLAY" ]; then
     export BROWSER="firefox"
@@ -27,7 +30,7 @@ else
 fi
 # nnn file manager
 export NNN_OPTS='EFHux'
-export NNN_PLUG='z:autojump;S:suedit;l:-!git log;p:-!less -iR $nnn*'
+export NNN_PLUG='z:autojump;S:suedit;l:-!git log;p:-!less -+F $nnn*'
 export NNN_BMS='d:~/Documents;D:~/Downloads/;r:~/repos/'
 if (( $+commands[trash-put] )); then
     export NNN_TRASH=1
