@@ -53,16 +53,23 @@ function command_not_found_handler {
     fi
 }
 
-HISTFILE=~/.local/share/zsh/histfile
-HISTSIZE=10000
-SAVEHIST=5000
+HISTFILE="$XDG_STATE_HOME"/zsh/history
+HISTSIZE=100000
+SAVEHIST=500000
+WORDCHARS="${WORDCHARS/\//}"
 
 autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
 autoload -Uz run-help
+(( ${+aliases[run-help]} )) && unalias run-help
+alias help=run-help
+autoload -Uz run-help-git run-help-ip run-help-openssl run-help-sudo run-help-svn
+autoload -Uz edit-command-line
 
 # code
 VSCODE=code-insiders
 
+zstyle ':completion::complete:*' use-cache on
+zstyle ':completion::complete:*' cache-path "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompcache"
 zstyle ':completion:*' auto-description '%d'
 zstyle ':completion:*' completer _expand_alias _complete _correct _approximate
 zstyle ':completion:*' format 'completing %d'
@@ -83,16 +90,38 @@ zstyle ':completion:*' list-suffixes true
 zstyle ':completion:*:functions' ignored-patterns '_*'
 zstyle ':completion:*:*:-command-:*:*' ignored-patterns '_*'
 zstyle ':completion::complete:*' gain-privileges 1
+# Don't complete uninteresting users...
+zstyle ':completion:*:*:*:users' ignored-patterns \
+  adm amanda apache avahi beaglidx bin cacti canna clamav daemon \
+  dbus distcache dovecot fax ftp games gdm gkrellmd gopher \
+  hacluster haldaemon halt hsqldb ident junkbust ldap lp mail \
+  mailman mailnull mldonkey mysql nagios \
+  named netdump news nfsnobody nobody nscd ntp nut nx openvpn \
+  operator pcap postfix postgres privoxy pulse pvm quagga radvd \
+  rpc rpcuser rpm shutdown squid sshd sync uucp vcsa xfs '_*'
+# ... unless we really want to.
+zstyle '*' single-ignored show
+# Ignore multiple entries.
+zstyle ':completion:*:(rm|kill|diff):*' ignore-line other
+zstyle ':completion:*:rm:*' file-patterns '*:all-files'
+# Kill
+zstyle ':completion:*:*:*:*:processes' command 'ps -u $LOGNAME -o pid,user,command -w'
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;36=0=01'
+zstyle ':completion:*:*:kill:*' menu yes select
+zstyle ':completion:*:*:kill:*' force-list always
+zstyle ':completion:*:*:kill:*' insert-ids single
+# Man
+zstyle ':completion:*:manuals' separate-sections true
+zstyle ':completion:*:manuals.(^1*)' insert-sections true
+
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
+zle -N edit-command-line
 
 setopt APPENDHISTORY SHARE_HISTORY BEEP
 setopt COMPLETE_ALIASES GLOB_COMPLETE COMPLETE_IN_WORD LIST_PACKED
 setopt auto_param_slash     # if completed parameter is a directory, add a trailing slash
 setopt always_to_end        # move cursor to the end of a completed word
-# whenever a command completion is attempted, make sure the entire command path
-# is hashed first.
-setopt HASH_LIST_ALL
 TRAPUSR1() { rehash }
 
 # Do not offer completion functions as corrections
@@ -144,6 +173,7 @@ bindkey -e
 # Create a zkbd compatible hash. To add other keys to this hash, see: man 5 terminfo and man 5 user_caps.
 typeset -g -A key
 
+key[Control]='\C-'
 key[Home]="${terminfo[khome]}"
 key[End]="${terminfo[kend]}"
 key[Insert]="${terminfo[kich1]}"
@@ -169,11 +199,10 @@ key[Control-Right]="${terminfo[kRIT5]}"
 [[ -n "${key[Down]}"          ]] && bindkey -- "${key[Down]}"          down-line-or-beginning-search
 [[ -n "${key[Left]}"          ]] && bindkey -- "${key[Left]}"          backward-char
 [[ -n "${key[Right]}"         ]] && bindkey -- "${key[Right]}"         forward-char
-[[ -n "${key[PageUp]}"        ]] && bindkey -- "${key[PageUp]}"        beginning-of-line-hist
-[[ -n "${key[PageDown]}"      ]] && bindkey -- "${key[PageDown]}"      end-of-line-hist
 [[ -n "${key[Shift-Tab]}"     ]] && bindkey -- "${key[Shift-Tab]}"     reverse-menu-complete
 [[ -n "${key[Control-Left]}"  ]] && bindkey -- "${key[Control-Left]}"  backward-word
 [[ -n "${key[Control-Right]}" ]] && bindkey -- "${key[Control-Right]}" forward-word
+[[ -n "${key[Control]}" ]] && bindkey -- "${key[Control]}X${key[Control]}E" edit-command-line
 
 # Finally, make sure the terminal is in application mode, when zle is active. Only then are the values from $terminfo valid.
 # https://www.zsh.org/mla/users/2010/msg00065.html
@@ -183,14 +212,6 @@ if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
     function zle_application_mode_stop () { echoti rmkx }
     add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
     add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
-fi
-
-if [[ -f /usr/share/fzf/key-bindings.zsh ]]; then
-    source /usr/share/fzf/key-bindings.zsh
-    source /usr/share/fzf/completion.zsh
-fi
-if [[ -f /usr/share/nnn/quitcd/quitcd.bash_zsh ]]; then
-    source /usr/share/nnn/quitcd/quitcd.bash_zsh
 fi
 
 alias code=code-insiders
@@ -213,6 +234,14 @@ if (( $+commands[code] || $+commands[code-insiders] )); then
     zinit snippet OMZP::vscode
 fi
 zinit ice depth=1; zinit light romkatv/powerlevel10k
+
+if [[ -f /usr/share/fzf/key-bindings.zsh ]]; then
+    source /usr/share/fzf/key-bindings.zsh
+    source /usr/share/fzf/completion.zsh
+fi
+if [[ -f /usr/share/nnn/quitcd/quitcd.bash_zsh ]]; then
+    source /usr/share/nnn/quitcd/quitcd.bash_zsh
+fi
 
 autoload -Uz compinit
 compinit -d $ZINIT[ZCOMPDUMP_PATH]

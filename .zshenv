@@ -1,6 +1,10 @@
 typeset -U PATH path
 
-ZSH_CACHE_DIR=$HOME/.cache/zsh
+# XDG
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+export SQLITE_HISTORY=$XDG_DATA_HOME/sqlite_history
+ZDOTDIR=$HOME/.config/zsh
+ZSH_CACHE_DIR=$XDG_CACHE_HOME/zsh
 
 # zinit
 declare -A ZINIT
@@ -33,4 +37,5 @@ fi
 export PATH="$HOME/.local/bin:$PATH"
 
 # cargo
-export PATH="$HOME/.cargo/bin:$PATH"
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export PATH="$CARGO_HOME/bin:$PATH"

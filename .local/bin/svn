@@ -1,0 +1,2 @@
+#!/bin/sh
+exec /bin/svn --config-dir $XDG_CONFIG_HOME/subversion $@
