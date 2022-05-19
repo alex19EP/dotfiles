@@ -1,6 +1,15 @@
 typeset -U PATH path
 
 # XDG
+XDG_DATA_HOME=$HOME/.local/share
+XDG_CONFIG_HOME=$HOME/.config
+XDG_STATE_HOME=$HOME/.local/state
+XDG_CACHE_HOME=$HOME/.cache
+ICEAUTHORITY="$XDG_CACHE_HOME"/ICEauthority
+_JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel 
+GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
+RANDFILE="$XDG_CACHE_HOME"/rnd
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export SQLITE_HISTORY=$XDG_DATA_HOME/sqlite_history
 ZDOTDIR=$HOME/.config/zsh
@@ -30,8 +39,8 @@ else
 fi
 # nnn file manager
 export NNN_OPTS='EFHux'
-export NNN_PLUG='z:autojump;S:suedit;l:-!git log;p:-!less -+F $nnn*'
-export NNN_BMS='d:~/Documents;D:~/Downloads/;r:~/repos/'
+export NNN_PLUG='f:fixname;m:mtpmount;g:gitroot;z:autojump;S:suedit;l:-!git log;p:-!less -+F $nnn*'
+export NNN_BMS='d:~/Downloads/;r:~/repos/;m:/run/user/1000/gvfs/;s:~/Sync/'
 if (( $+commands[trash-put] )); then
     export NNN_TRASH=1
 fi
