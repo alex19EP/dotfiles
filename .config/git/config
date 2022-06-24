@@ -12,6 +12,11 @@
 	date = relative
 [credential]
 	helper = /usr/lib/git-core/git-credential-libsecret
+	helper = 
+	helper = /usr/lib/share/git-credential-manager-core/git-credential-manager-core
+	credentialStore = secretservice
+	guiPrompt = false
+	msauthFlow = devicecode
 [pull]
 	ff = only
 	autostash = true
@@ -50,11 +55,28 @@
 	directoryRenames = true
 [status]
 	showStash = true
-[submodule]
-	recurse = true
-	fetchJobs = 0
 [credential "https://github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
 [core]
 	untrackedCache = true
+[difftool "vscode"]
+  cmd = code-insiders --wait --diff $LOCAL $REMOTE
+[mergetool "vscode"]
+  cmd = code-insiders --wait $MERGED
+[diff]
+  tool = vscode
+[merge]
+  tool = vscode
+[mergetool]
+	keepBackup = false
+	keepTemporaries = false
+	prompt = true
+[receive]
+	fsckObjects = true
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+[credential "https://gitlab.freedesktop.org"]
+	provider = generic
+[review "review.lineageos.org"]
+	username = erik-pro
