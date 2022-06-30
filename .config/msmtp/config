@@ -24,3 +24,12 @@ host           mail.archlinux.org
 from           alex19ep@archlinux.org
 user           alex19ep@archlinux.org
 passwordeval   "bw --nointeraction get password 'arch email'"
+
+# Sardina systems
+account        sardina
+port           587 
+tls_starttls   on
+host           mailbox.svc.sardinasystems.com
+from           aepaneshnikov@sardinasystems.com
+user           aepaneshnikov
+passwordeval   "bw --nointeraction get password 'sardina systems'"

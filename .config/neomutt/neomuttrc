@@ -50,4 +50,8 @@ macro index,pager <f4> '<sync-mailbox><enter-command>source $my_cfgdir/accounts/
 
 # admin
 folder-hook admin/* source $my_cfgdir/accounts/admin
-macro index,pager <f5> '<sync-mailbox><enter-command>source $my_cfgdir/accounts/admin<enter><change-folder>!<enter>'
+macro index,pager <f6> '<sync-mailbox><enter-command>source $my_cfgdir/accounts/admin<enter><change-folder>!<enter>'
+
+# sardina
+folder-hook sardina/* source $my_cfgdir/accounts/sardina
+macro index,pager <f5> '<sync-mailbox><enter-command>source $my_cfgdir/accounts/sardina<enter><change-folder>!<enter>'
