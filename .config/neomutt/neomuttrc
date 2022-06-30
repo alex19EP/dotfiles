@@ -17,9 +17,9 @@ set forward_format = "Fwd: %s"
 set pager_context = 1
 set realname = "Alexander Epaneshnikov"
 set use_from = yes
-set envelope_from= yes
-set fast_reply= yes
-set include= yes
+set envelope_from = yes
+set fast_reply = yes
+set include = yes
 set pager_stop
 set status_on_top
 set beep_new
@@ -27,10 +27,13 @@ unset markers
 unset mark_old
 unset confirmappend
 set delete
+set size_show_mb       
 set help = no
 set sleep_time = 0
 set edit_headers= yes
 set auto_tag = yes
+set index_format='%4C %Z %<[y?%<[m?%<[d?%[%H:%M ]&%[%a %d]>&%[%b %d]>&%[%m/%y ]> %=15.25L %s'
+set display_filter="exec sed -r \"s/^Date:\\s*(([F-Wa-u]{3},\\s*)?[[:digit:]]{1,2}\\s+[A-Sa-y]{3}\\s+[[:digit:]]{4}\\s+[[:digit:]]{1,2}:[[:digit:]]{1,2}(:[[:digit:]]{1,2})?\\s+[+-][[:digit:]]{4})/date +'Date: %a, %d %b %Y %H:%M:%S %z' -d '\\1'/e\""
 ## Make quick html view macro
 bind index,pager V  noop        ## Unbinds V from version
 macro index,pager V "<view-attachments><search>html<enter><view-mailcap><exit>"
