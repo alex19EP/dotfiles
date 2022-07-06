@@ -14,6 +14,7 @@ export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export SQLITE_HISTORY=$XDG_DATA_HOME/sqlite_history
 ZDOTDIR=$HOME/.config/zsh
 ZSH_CACHE_DIR=$XDG_CACHE_HOME/zsh
+export GNUPGHOME=$XDG_DATA_HOME/gnupg
 
 # zinit
 declare -A ZINIT
