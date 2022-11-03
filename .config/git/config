@@ -35,15 +35,17 @@
 	repo = /home/alex/repos/pkgbuilds
 	repo = /home/alex/repos/archiso
 	repo = /home/alex/repos/espeak-ng
-	repo = /home/alex/repos/linux-stable
+	repo = /home/alex/repos/linux/src
 [push]
 	default = upstream
 	followTags = true
 	recurseSubmodules = on-demand
+	autoSetupRemote = true
 [rebase]
 	autoSquash = true
 	autoStash = true
 	stat = true
+	updateRefs = true
 [help]
 	autoCorrect = prompt
 [checkout]
@@ -80,3 +82,7 @@
 	provider = generic
 [review "review.lineageos.org"]
 	username = erik-pro
+[gitreview]
+	username = alex19EP
+[scalar]
+	repo = /home/alex/repos/linux/src
