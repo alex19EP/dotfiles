@@ -2,6 +2,8 @@ Create Both
 Expunge Both
 CopyArrivalDate yes
 SyncState *
+Fsync no
+Sync All
 
 # gmail
 IMAPAccount gmail
