@@ -236,11 +236,14 @@ fi
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 if [[ -f /usr/share/fzf/key-bindings.zsh ]]; then
-    source /usr/share/fzf/key-bindings.zsh
+    #source /usr/share/fzf/key-bindings.zsh
     source /usr/share/fzf/completion.zsh
 fi
-if [[ -f /usr/share/nnn/quitcd/quitcd.bash_zsh ]]; then
-    source /usr/share/nnn/quitcd/quitcd.bash_zsh
+if [[ -f /usr/share/nnn/quitcd/quitcd.bash_sh_zsh ]]; then
+    source /usr/share/nnn/quitcd/quitcd.bash_sh_zsh
+fi
+if [[ -f /usr/share/doc/mcfly/mcfly.zsh ]]; then
+    source /usr/share/doc/mcfly/mcfly.zsh
 fi
 
 autoload -Uz compinit
@@ -250,4 +253,4 @@ compinit -d $ZINIT[ZCOMPDUMP_PATH]
 [[ ! -f ~/.config/p10k/p10k.zsh ]] || source ~/.config/p10k/p10k.zsh
 
 # aliases
-alias trans=' trans -b'
+[ -f "${ZDOTDIR}/aliases" ] && source "${ZDOTDIR}/aliases" ||:

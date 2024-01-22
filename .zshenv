@@ -27,7 +27,7 @@ export ZPFX=$ZINIT[HOME_DIR]/polaris
 
 export AUR_PAGER=nnn
 # editor
-export EDITOR=nano
+export EDITOR=micro
 export VISUAL="$(if [[ -n $DISPLAY || $TERM_PROGRAM = vscode ]]; then echo 'code-insiders -rw'; else echo 'nano'; fi)"
 export PAGER='less'
 export LESS='-giMRS'
@@ -46,9 +46,18 @@ if (( $+commands[trash-put] )); then
     export NNN_TRASH=1
 fi
 
+# McFly
+export MCFLY_FUZZY=2
+export MCFLY_INTERFACE_VIEW=BOTTOM
+
 # .local/bin
 export PATH="$HOME/.local/bin:$PATH"
 
 # cargo
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export PATH="$CARGO_HOME/bin:$PATH"
+
+# go 
+export PATH="$HOME/go/bin:$PATH"
+
+export GNUPGHOME=/home/alex/.local/share/gnupg
