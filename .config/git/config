@@ -17,6 +17,8 @@
 	credentialStore = secretservice
 	guiPrompt = false
 	msauthFlow = devicecode
+	helper = 
+	helper = /usr/bin/git-credential-manager
 [pull]
 	ff = only
 	autostash = true
@@ -86,3 +88,7 @@
 	username = alex19EP
 [scalar]
 	repo = /home/alex/repos/linux/src
+[credential "https://scm.sardinasystems.com"]
+	provider = generic
+[credential "https://opendev.org"]
+	provider = generic
