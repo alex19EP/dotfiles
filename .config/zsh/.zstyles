@@ -1,0 +1,2 @@
+zstyle ':antidote:bundle' use-friendly-names 'yes'
+zstyle ':antidote:static' zcompile 'yes'

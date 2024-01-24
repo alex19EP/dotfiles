@@ -1,3 +1,6 @@
+(( ${+aliases[run-help]} )) && unalias run-help
+alias help=run-help
 alias trans=' trans -b'
 alias engtr='trans :eng'
 alias mpc='MPC_FORMAT="%title% [\n\t%artist%][\n\t%album%]" mpc'
+alias code=code-insiders

@@ -16,15 +16,6 @@ ZDOTDIR=$HOME/.config/zsh
 ZSH_CACHE_DIR=$XDG_CACHE_HOME/zsh
 export GNUPGHOME=$XDG_DATA_HOME/gnupg
 
-# zinit
-declare -A ZINIT
-export ZINIT[HOME_DIR]=$HOME/.local/lib/zinit
-export ZINIT[PLUGINS_DIR]=$ZINIT[HOME_DIR]/plugins
-export ZINIT[COMPLETIONS_DIR]=$ZINIT[HOME_DIR]/completions
-export ZINIT[SNIPPETS_DIR]=$ZINIT[HOME_DIR]/snippets
-export ZINIT[ZCOMPDUMP_PATH]="${ZSH_CACHE_DIR}/zcompdump-$ZSH_VERSION"
-export ZPFX=$ZINIT[HOME_DIR]/polaris
-
 export AUR_PAGER=nnn
 # editor
 export EDITOR=micro
@@ -59,5 +50,3 @@ export PATH="$CARGO_HOME/bin:$PATH"
 
 # go 
 export PATH="$HOME/go/bin:$PATH"
-
-export GNUPGHOME=/home/alex/.local/share/gnupg

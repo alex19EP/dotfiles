@@ -1,0 +1,23 @@
+romkatv/powerlevel10k
+romkatv/zsh-bench kind:path
+mattmc3/zephyr path:plugins/completion
+mattmc3/zman
+mattmc3/zephyr path:plugins/confd
+mattmc3/zephyr path:plugins/directory
+mattmc3/zephyr path:plugins/editor
+mattmc3/zephyr path:plugins/environment
+mattmc3/zephyr path:plugins/history
+mattmc3/zephyr path:plugins/utility
+mattmc3/zephyr path:plugins/zfunctions
+ohmyzsh/ohmyzsh path:plugins/git
+ohmyzsh/ohmyzsh path:plugins/gitignore
+ohmyzsh/ohmyzsh path:plugins/sudo
+ohmyzsh/ohmyzsh path:plugins/systemadmin
+ohmyzsh/ohmyzsh path:plugins/vscode
+ohmyzsh/ohmyzsh path:plugins/adb kind:fpath
+mellbourn/zabb
+amyreese/zsh-take
+akash329d/zsh-alias-finder
+olets/zsh-abbr    kind:defer
+3v1n0/zsh-bash-completions-fallback
+baliestri/git-profiles.plugin.zsh
