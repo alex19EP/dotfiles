@@ -1,0 +1,5 @@
+Host iss
+	Hostname 100.106.161.114 
+	User alarm
+	port 22
+	Include trusted

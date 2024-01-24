@@ -1,3 +1,3 @@
 # dotfiles
 
-my configuration files. managed with [yadm](https://yadm.io).
+my configuration files. managed with [chezmoi](https://chezmoi.io).

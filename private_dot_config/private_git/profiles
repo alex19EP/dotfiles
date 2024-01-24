@@ -1,0 +1,7 @@
+[profile "default"]
+  name = Alexander Epaneshnikov
+  email = aarnaarn2@gmail.com
+[profile "work"]
+  name = Alexander Epaneshnikov
+  email = aepaneshnikov@sardinasystems.com
+  path = "/home/alex/repos/sardina"

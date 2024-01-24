@@ -1,0 +1,4 @@
+Host voyager
+	User alex
+	Hostname 100.126.125.118
+	Include trusted

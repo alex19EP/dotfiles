@@ -1,0 +1,4 @@
+Host alex-pc
+	User alex
+	Hostname 100.98.218.37 
+	Include trusted
