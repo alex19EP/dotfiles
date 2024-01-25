@@ -1,0 +1,2 @@
+abbr -g "L"="| less"
+abbr "cz"="chezmoi"
