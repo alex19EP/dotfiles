@@ -1,4 +1,4 @@
 ForwardAgent yes
 PermitLocalCommand yes
 StreamLocalBindUnlink yes
-#RemoteForward /run/user/1000/gnupg/S.gpg-agent /run/user/1000/gnupg/d.uf4qnedu6tfpxtmo6gyoytsi/S.gpg-agent.extra
+#RemoteForward /run/user/1000/gnupg/d.uf4qnedu6tfpxtmo6gyoytsi/S.gpg-agent /run/user/1000/gnupg/d.uf4qnedu6tfpxtmo6gyoytsi/S.gpg-agent.extra
