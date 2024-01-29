@@ -40,6 +40,7 @@ bind index,pager \Cf vfolder-from-query
 unbind index,pager D
 bind index,pager D purge-message
 macro index,pager V "<view-attachments><search>html<enter><view-mailcap><exit>"
+macro index S "<shell-escape>mbsync -ac ~/.config/isync/mbsyncrc<enter>" "run mbsync to sync all mail"
 
 # gmail
 folder-hook gmail/* source $my_cfgdir/accounts/gmail
