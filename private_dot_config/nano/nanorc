@@ -1,0 +1,7 @@
+set autoindent
+set cutfromcursor
+set positionlog
+set showcursor
+set smarthome
+set stateflags
+bind Sh-M-C "{execute}| xsel -ib {enter}{undo}" main
