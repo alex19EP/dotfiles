@@ -10,35 +10,35 @@ IMAPAccount gmail
 Host imap.gmail.com
 User aarnaarn2@gmail.com
 PassCmd "rbw get -f apppassword/linux@alex-pc google"
-SSLType IMAPS
+TLSType IMAPS
 
 # personal
 IMAPAccount personal
 Host mail.alex19ep.me
 User email@alex19ep.me
 PassCmd "rbw get 'my email'"
-SSLType IMAPS
+TLSType IMAPS
 
 # admin
 IMAPAccount admin
 Host mail.alex19ep.me
 User admin@alex19ep.me
 PassCmd "rbw get 'admin email'"
-SSLType IMAPS
+TLSType IMAPS
 
 # arch linux
 IMAPAccount arch
 Host mail.archlinux.org
 User alex19ep@archlinux.org
 PassCmd "rbw get 'arch email'"
-SSLType IMAPS
+TLSType IMAPS
 
 # sardina systems
 IMAPAccount sardina
 Host mailbox.svc.sardinasystems.com
 User aepaneshnikov
 PassCmd "rbw get 'sardina systems'"
-SSLType IMAPS
+TLSType IMAPS
 
 IMAPStore gmail-remote
 Account gmail

@@ -1,5 +1,5 @@
 Host moon
-	Hostname 100.68.182.79   
+	Hostname 100.68.182.79
 	User alex
 	port 20022
 	Include trusted
