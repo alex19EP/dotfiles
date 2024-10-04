@@ -7,7 +7,7 @@ XDG_STATE_HOME=$HOME/.local/state
 XDG_CACHE_HOME=$HOME/.cache
 ICEAUTHORITY="$XDG_CACHE_HOME"/ICEauthority
 _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
-PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel 
+PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
 GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
 RANDFILE="$XDG_CACHE_HOME"/rnd
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
@@ -18,8 +18,8 @@ export GNUPGHOME=$XDG_DATA_HOME/gnupg
 
 export AUR_PAGER=nnn
 # editor
-export EDITOR=enano
-export VISUAL="$(if [[ -n $DISPLAY || $TERM_PROGRAM = vscode ]]; then echo 'code-insiders -rw'; else echo 'enano'; fi)"
+export EDITOR='nano --modernbindings'
+export VISUAL="$(if [[ -n $DISPLAY || $TERM_PROGRAM = vscode ]]; then echo 'code-insiders -rw'; else echo 'nano --modernbindings'; fi)"
 export PAGER='less'
 export LESS='-giMRS'
 
@@ -41,6 +41,9 @@ fi
 export MCFLY_FUZZY=2
 export MCFLY_INTERFACE_VIEW=BOTTOM
 
+# nb
+export NBRC_PATH="$XDG_CONFIG_HOME/nbrc"
+
 # .local/bin
 export PATH="$HOME/.local/bin:$PATH"
 
@@ -48,5 +51,5 @@ export PATH="$HOME/.local/bin:$PATH"
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export PATH="$CARGO_HOME/bin:$PATH"
 
-# go 
+# go
 export PATH="$HOME/go/bin:$PATH"

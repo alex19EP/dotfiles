@@ -4,3 +4,5 @@ alias trans=' trans -b'
 alias engtr='trans :eng'
 alias mpc='MPC_FORMAT="%title% [\n\t%artist%][\n\t%album%]" mpc'
 alias code=code-insiders
+alias nano='nano --modernbindings'
+alias winvm="sudo ~/.local/bin/winvm"
