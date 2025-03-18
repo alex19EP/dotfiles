@@ -1,10 +1,6 @@
-[user]
-	name = Alexander Epaneshnikov
-	email = aarnaarn2@gmail.com
 [rerere]
 	enabled = true
 [commit]
-	gpgsign = true
 	status = true
 	verbose = true
 [log]
@@ -12,12 +8,12 @@
 	date = relative
 [credential]
 	helper = /usr/lib/git-core/git-credential-libsecret
-	helper = 
+	helper =
 	helper = /usr/lib/share/git-credential-manager-core/git-credential-manager-core
 	credentialStore = secretservice
 	guiPrompt = false
 	msauthFlow = devicecode
-	helper = 
+	helper =
 	helper = /usr/bin/git-credential-manager
 [pull]
 	ff = only
@@ -52,7 +48,6 @@
 	autoCorrect = prompt
 [checkout]
 	guess = true
-	workers = -1
 [diff]
 	mnemonicprefix = true
 [merge]
@@ -60,7 +55,7 @@
 [status]
 	showStash = true
 [credential "https://github.com"]
-	helper = 
+	helper =
 	helper = !/usr/bin/gh auth git-credential
 [core]
 	untrackedCache = true
@@ -92,3 +87,7 @@
 	provider = generic
 [credential "https://opendev.org"]
 	provider = generic
+[include]
+	path = ~/.config/git/config-personal
+[includeIf "gitdir:~/repos/sardina/"]
+	path = ~/.config/git/config-sardina

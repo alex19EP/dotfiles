@@ -19,4 +19,3 @@ amyreese/zsh-take
 akash329d/zsh-alias-finder
 olets/zsh-abbr    kind:defer
 3v1n0/zsh-bash-completions-fallback
-baliestri/git-profiles.plugin.zsh

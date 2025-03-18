@@ -1,0 +1,5 @@
+[user]
+	name = Alexander Epaneshnikov
+	email = aepaneshnikov@sardinasystems.com
+[commit]
+	gpgsign = false

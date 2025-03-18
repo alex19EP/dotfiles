@@ -83,7 +83,6 @@ zle -N down-line-or-beginning-search
 bindkey "$terminfo[kcuu1]" up-line-or-beginning-search
 bindkey "$terminfo[kcud1]" down-line-or-beginning-search
 
-export GIT_PROFILES_FILE="$HOME/.config/git/profiles"
 if [[ -f /usr/share/fzf/key-bindings.zsh ]]; then
     source /usr/share/fzf/completion.zsh
 fi
