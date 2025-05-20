@@ -33,13 +33,6 @@ User alex19ep@archlinux.org
 PassCmd "rbw get 'arch email'"
 TLSType IMAPS
 
-# sardina systems
-IMAPAccount sardina
-Host mailbox.svc.sardinasystems.com
-User aepaneshnikov
-PassCmd "rbw get 'sardina systems'"
-TLSType IMAPS
-
 IMAPStore gmail-remote
 Account gmail
 
@@ -51,9 +44,6 @@ Account admin
 
 IMAPStore arch-remote
 Account arch
-
-IMAPStore sardina-remote
-Account sardina
 
 MaildirStore gmail-local
 SubFolders Verbatim
@@ -75,11 +65,6 @@ SubFolders Verbatim
 Path ~/.local/share/mail/arch/
 Inbox ~/.local/share/mail/arch/Inbox
 
-MaildirStore sardina-local
-SubFolders Verbatim
-Path ~/.local/share/mail/sardina/
-Inbox ~/.local/share/mail/sardina/Inbox
-
 Channel gmail
 Far :gmail-remote:
 Near :gmail-local:
@@ -98,9 +83,4 @@ Patterns *
 Channel arch
 Far :arch-remote:
 Near :arch-local:
-Patterns *
-
-Channel sardina
-Far :sardina-remote:
-Near :sardina-local:
 Patterns *

@@ -15,7 +15,7 @@ set sendmail = "/usr/bin/msmtp"
 set user_agent
 set forward_format = "Fwd: %s"
 set pager_context = 1
-set realname = "Alexander Epaneshnikov"
+set realname = "Alexandr Epaneshnikov"
 set use_from = yes
 set envelope_from = yes
 set fast_reply = yes
@@ -27,7 +27,7 @@ unset markers
 unset mark_old
 unset confirmappend
 set delete
-set size_show_mb       
+set size_show_mb
 set help = no
 set sleep_time = 0
 set edit_headers= yes
@@ -58,7 +58,3 @@ macro index,pager <f4> '<sync-mailbox><enter-command>source $my_cfgdir/accounts/
 # admin
 folder-hook admin/* source $my_cfgdir/accounts/admin
 macro index,pager <f6> '<sync-mailbox><enter-command>source $my_cfgdir/accounts/admin<enter><change-folder>!<enter>'
-
-# sardina
-folder-hook sardina/* source $my_cfgdir/accounts/sardina
-macro index,pager <f5> '<sync-mailbox><enter-command>source $my_cfgdir/accounts/sardina<enter><change-folder>!<enter>'
