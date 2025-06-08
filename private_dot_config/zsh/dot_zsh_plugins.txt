@@ -1,5 +1,7 @@
+mattmc3/ez-compinit
+getantidote/use-omz
 romkatv/powerlevel10k
-romkatv/zsh-bench kind:path
+romkatv/zsh-bench    kind:path
 mattmc3/zephyr path:plugins/completion
 mattmc3/zman
 mattmc3/zephyr path:plugins/confd
@@ -12,6 +14,7 @@ mattmc3/zephyr path:plugins/zfunctions
 ohmyzsh/ohmyzsh path:plugins/git
 ohmyzsh/ohmyzsh path:plugins/systemadmin
 ohmyzsh/ohmyzsh path:plugins/sudo
+ohmyzsh/ohmyzsh path:plugins/extract
 ohmyzsh/ohmyzsh path:plugins/vscode
 ohmyzsh/ohmyzsh path:plugins/adb kind:fpath
 mellbourn/zabb
@@ -19,3 +22,4 @@ amyreese/zsh-take
 akash329d/zsh-alias-finder
 olets/zsh-abbr    kind:defer
 3v1n0/zsh-bash-completions-fallback
+jarun/nnn   path:misc/quitcd/quitcd.bash_sh_zsh
