@@ -1,8 +1,10 @@
-(( ${+aliases[run-help]} )) && unalias run-help
-alias help=run-help
 alias trans=' deepl text'
 alias engtr='trans --to en-us'
 alias mpc='MPC_FORMAT="%title% [\n\t%artist%][\n\t%album%]" mpc'
 alias code=code-insiders
 alias nano='nano --modernbindings'
 alias winvm="sudo ~/.local/bin/winvm"
+alias "L"="| less"
+alias "cz"="chezmoi"
+alias "pa"="paru"
+alias "pkc"="pkgctl"
