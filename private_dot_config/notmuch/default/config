@@ -34,7 +34,7 @@ hook_dir=/home/alex/.config/notmuch/default/hooks
 [user]
 name=Alexander Epaneshnikov
 primary_email=email@alex19ep.me
-other_email=admin@alex19ep.me;aarnaarn2@gmail.com;alex19ep@yandex.ru;alex19ep@archlinux.org;aepaneshnikov@sardinasystems.com
+other_email=admin@alex19ep.me;aarnaarn2@gmail.com;alex19ep@yandex.ru;alex19ep@archlinux.org
 
 # Configuration for "notmuch new"
 #

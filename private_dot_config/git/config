@@ -76,8 +76,6 @@
 	username = alex19EP
 [scalar]
 	repo = /home/alex/repos/linux/src
-[credential "https://scm.sardinasystems.com"]
-	provider = generic
 [credential "https://opendev.org"]
 	provider = generic
 [include]
