@@ -27,13 +27,6 @@
 	defaultBranch = main
 [pack]
 	writeReverseIndex = true
-[maintenance]
-	repo = /home/alex/repos/RHVoice
-	repo = /home/alex/repos/Cataclysm-DDA
-	repo = /home/alex/repos/pkgbuilds
-	repo = /home/alex/repos/archiso
-	repo = /home/alex/repos/espeak-ng
-	repo = /home/alex/repos/linux/src
 [push]
 	default = upstream
 	followTags = true
@@ -89,5 +82,3 @@
 	provider = generic
 [include]
 	path = ~/.config/git/config-personal
-[includeIf "gitdir:~/repos/sardina/"]
-	path = ~/.config/git/config-sardina
