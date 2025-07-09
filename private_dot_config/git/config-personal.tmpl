@@ -1,6 +1,8 @@
 [user]
-	name = Alexander Epaneshnikov
-	email = {{ .email }}
-{{ if ne .myGpgKey "none"  }}	signingkey = {{ .myGpgKey }}
+	name = {{ .name | quote }}
+	email = {{ .email | quote }}
+{{- if ne .myGpgKey "none" }}
+	signingkey = {{ .myGpgKey }}
 [commit]
-	gpgsign = true{{ end }}
+	gpgsign = true
+{{- end }}

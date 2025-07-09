@@ -1,0 +1,18 @@
+{{- $codespaces:= env "CODESPACES" | not | not -}}
+{{- $osid := .chezmoi.os -}}
+{{- if hasKey .chezmoi.osRelease "id" -}}
+{{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{- end -}}
+sourceDir = {{ .chezmoi.sourceDir | quote }}
+
+[data]
+    osid = {{ $osid | quote }}
+    name = "Alexander Epaneshnikov"
+    codespaces = {{ $codespaces }}
+{{- if $codespaces }}{{/* Codespaces dotfiles setup is non-interactive, so set an email address */}}
+    email = "aarnaarn2@gmail.com"
+    myGpgKey = "none"
+{{- else }}{{/* Interactive setup, so prompt for an email address */}}
+    email = {{ promptString "email" | quote }}
+    myGpgKey = {{ promptString "gpg key fingerprint" | quote }}
+{{- end }}
