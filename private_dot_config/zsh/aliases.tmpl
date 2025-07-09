@@ -1,0 +1,7 @@
+{{ if lookPath "deepl" }}alias trans=' deepl text'
+alias engtr='trans --to en-us'{{ end }}
+{{ if lookPath "code-insiders" }}alias code=code-insiders{{ else if lookPath "code" }}alias code=code{{ end }}
+alias "L"="| less"
+alias "cz"="chezmoi"
+{{ if lookPath "paru" }}alias "pa"="paru"{{ end }}
+{{ if lookPath "pkgctl" }}alias "pkc"="pkgctl"{{ end }}

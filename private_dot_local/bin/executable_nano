@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Use full path to avoid calling this script recursively
+REAL_NANO=/usr/bin/nano
+
+exec "$REAL_NANO" --modernbindings "$@"
