@@ -1,7 +1,7 @@
 MAKEFLAGS="-O -j$(nproc)"
 INTEGRITY_CHECK=(sha512 b2)
 PACKAGER="Alexander Epaneshnikov <alex19ep@archlinux.org>"
-GPGKEY="6C7F7F22E0152A6FD5728592DAD6F3056C897266"
+GPGKEY={{ .myGpgKey | quote }}
 SRCDEST="$HOME/.cache/makepkg/src"
 SRCPKGDEST="$HOME/.cache/makepkg/srcpkg"
 PKGDEST="$HOME/.cache/makepkg/pkg"
