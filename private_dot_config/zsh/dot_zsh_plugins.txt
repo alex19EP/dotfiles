@@ -28,6 +28,4 @@ ohmyzsh/ohmyzsh path:plugins/zoxide
 mellbourn/zabb
 amyreese/zsh-take
 akash329d/zsh-alias-finder
-#olets/zsh-abbr    kind:defer
 3v1n0/zsh-bash-completions-fallback
-jarun/nnn   path:misc/quitcd/quitcd.bash_sh_zsh

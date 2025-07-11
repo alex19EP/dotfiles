@@ -2,11 +2,7 @@
 [[ -e ${ZDOTDIR:-~}/.zstyles ]] && source ${ZDOTDIR:-~}/.zstyles
 
 # Clone antidote if necessary.
-[[ -d ${ZDOTDIR:-~}/.antidote ]] ||
-  git clone https://github.com/mattmc3/antidote ${ZDOTDIR:-~}/.antidote
-
-# source antidote
-source ${ZDOTDIR:-~}/.antidote/antidote.zsh
+[[ -e ${ZDOTDIR:-~}/.antidote/antidote.zsh ]] && source ${ZDOTDIR:-~}/.antidote/antidote.zsh
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
