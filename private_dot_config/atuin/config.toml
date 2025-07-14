@@ -1,0 +1,7 @@
+prefers_reduced_motion = true
+enter_accept = false
+style = "compact"
+workspaces = true
+show_tabs = false
+[sync]
+records = true

@@ -1,4 +1,1 @@
 abbr -g "L"="| less"
-abbr "cz"="chezmoi"
-abbr "pa"="paru"
-abbr "pkc"="pkgctl"
