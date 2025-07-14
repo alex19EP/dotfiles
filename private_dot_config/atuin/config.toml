@@ -3,5 +3,7 @@ enter_accept = false
 style = "compact"
 workspaces = true
 show_tabs = false
+
 [sync]
 records = true
+sync_address = "https://atuin.alex19ep.me"
