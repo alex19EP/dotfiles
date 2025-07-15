@@ -47,7 +47,7 @@ autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
 autoload -Uz run-help-git run-help-ip run-help-openssl run-help-sudo run-help-svn
 
 # code
-VSCODE=code-insiders
+VSCODE={{ template "vscode" }}
 
 setopt COMPLETE_ALIASES GLOB_COMPLETE COMPLETE_IN_WORD LIST_PACKED
 setopt auto_param_slash     # if completed parameter is a directory, add a trailing slash

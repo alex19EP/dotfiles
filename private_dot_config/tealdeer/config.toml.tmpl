@@ -26,5 +26,9 @@ bold = false
 compact = false
 
 [updates]
+{{- if eq .work true }}
+auto_update = false
+{{- else }}
 auto_update = true
 auto_update_interval_hours = 24
+{{- end }}

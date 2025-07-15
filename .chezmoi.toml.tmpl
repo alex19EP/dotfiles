@@ -15,7 +15,9 @@ sourceDir = {{ .chezmoi.sourceDir | quote }}
     {{- if $codespaces }}{{/* Codespaces dotfiles setup is non-interactive, so set an email address */}}
     email = "aarnaarn2@gmail.com"
     myGpgKey = "none"
+    work = false
     {{- else }}{{/* Interactive setup, so prompt for an email address */}}
     email = {{ promptString "email" "aarnaarn2@gmail.com" | quote }}
     myGpgKey = {{ promptString "gpg key fingerprint" "6C7F7F22E0152A6FD5728592DAD6F3056C897266" | quote }}
+    work = {{ promptBool "is it a work computor?" false }}
     {{- end }}

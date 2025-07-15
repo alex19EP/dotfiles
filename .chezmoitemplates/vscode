@@ -1,0 +1,5 @@
+{{- if lookPath "code-insiders" -}}
+{{- printf "code-insiders" -}}
+{{- else -}}
+{{- printf "code" -}}
+{{- end -}}

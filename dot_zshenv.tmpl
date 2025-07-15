@@ -19,7 +19,7 @@ export GNUPGHOME=$XDG_DATA_HOME/gnupg
 export AUR_PAGER=nnn
 # editor
 export EDITOR='nano --modernbindings'
-export VISUAL="$(if [[ -n $DISPLAY || $TERM_PROGRAM = vscode ]]; then echo 'code-insiders -rw'; else echo 'nano --modernbindings'; fi)"
+export VISUAL="$(if [[ -n $DISPLAY || $TERM_PROGRAM = vscode ]]; then echo '{{ template "vscode" }} -rw'; else echo 'nano --modernbindings'; fi)"
 
 # browser
 if [ -n "$DISPLAY" ]; then
