@@ -34,6 +34,9 @@ unbind %
 # Create new panes in the same working directory
 bind c new-window -c "#{pane_current_path}"
 
+# url-scan
+bind-key u capture-pane \; save-buffer /tmp/tmux-buffer \; new-window -n "url-scan" '$SHELL -c "urlscan < /tmp/tmux-buffer"'
+
 set-option -g @plugin 'tmux-plugins/tpm'
 set-option -g @plugin 'tmux-plugins/tmux-sensible'
 set-option -g @plugin 'tmux-plugins/tmux-open'
