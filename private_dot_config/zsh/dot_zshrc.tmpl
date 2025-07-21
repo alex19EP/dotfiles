@@ -78,6 +78,14 @@ zle -N down-line-or-beginning-search
 bindkey "$terminfo[kcuu1]" up-line-or-beginning-search
 bindkey "$terminfo[kcud1]" down-line-or-beginning-search
 
+function expand-alias-and-accept-line() {
+  zle _expand_alias
+  zle accept-line
+}
+
+zle -N expand-alias-and-accept-line
+bindkey '^M' expand-alias-and-accept-line  # Enter
+
 if (( $+commands[atuin] )); then
     eval "$(atuin init zsh --disable-up-arrow)"
 fi
