@@ -1,0 +1,9 @@
+{{- if (not .ephemeral) -}}
+#!/bin/sh
+
+if [ ! -f "${HOME}/.config/chezmoi/key.txt" ]; then
+    mkdir -p "${HOME}/.config/chezmoi"
+    age-plugin-yubikey -l --serial 31841128 --slot 1 > "${HOME}/.config/chezmoi/key.txt"
+    chmod 600 "${HOME}/.config/chezmoi/key.txt"
+fi
+{{ end -}}

@@ -37,6 +37,15 @@
 {{- end -}}
 
 sourceDir = {{ .chezmoi.sourceDir | quote }}
+encryption = "age"
+
+[age]
+identity = "~/.config/chezmoi/key.txt"
+recipient = "age1yubikey1qgquc8cft0va9nxqwyx68f3a8vt4ys48l0ymfp0ut0j2kpg6nv9yzdqexva"
+
+[edit]
+apply = true
+watch = true
 
 [hooks.read-source-state.pre]
     command = ".local/share/chezmoi/.install-password-manager.sh"
