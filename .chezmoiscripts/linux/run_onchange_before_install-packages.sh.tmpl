@@ -1,0 +1,31 @@
+{{ if eq .osid "linux-debian" "linux-ubuntu" "linux-arch" -}}
+
+{{ $packages := list
+     "atuin"
+     "curl"
+     "fzf"
+     "git-lfs"
+     "git"
+     "jq"
+     "ripgrep"
+     "rustup"
+     "shellcheck"
+     "zoxide"
+     "zsh"
+-}}
+{{ if not .headless -}}
+{{   $packages = mustAppend $packages "wl-clipboard" -}}
+{{ end -}}
+
+{{ $sudo := "sudo " -}}
+{{ if eq .chezmoi.username "root" -}}
+{{   $sudo = "" -}}
+{{ end -}}
+
+#!/bin/bash
+
+set -eufo pipefail
+
+{{ $sudo }}{{ template "pmInstall" . }} {{ $packages | join " " }}
+
+{{ end -}}

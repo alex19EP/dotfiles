@@ -1,0 +1,5 @@
+{{- if eq .osid "linux-arch" -}}
+{{- printf "pacman -S --needed --noconfirm" -}}
+{{- else if eq .osid "linux-debian" "linux-ubuntu" -}}
+{{- printf "apt install -y" -}}
+{{- end -}}
