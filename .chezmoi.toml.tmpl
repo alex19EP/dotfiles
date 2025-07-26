@@ -1,23 +1,62 @@
+{{/* boolean feature tags */}}
+{{- $ephemeral := false -}}{{/* true if this machine is ephemeral, e.g. a cloud or VM instance */}}
+{{- $work := false -}}{{/* true if this machine is a work machine */}}
+{{- $headless := false -}}{{/* true if this machine does not have a screen and keyboard */}}
+{{- $personal := false -}}{{/* true if this machine should have personal secrets */}}
+{{- "" -}}
 {{- $codespaces:= env "CODESPACES" | not | not -}}
 {{- $osid := .chezmoi.os -}}
 {{- if hasKey .chezmoi.osRelease "id" -}}
 {{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
 {{- end -}}
+
+{{/* detect GitHub codespaces, VSCode remote containers, Docker containers, Multipass VMs, and Vagrant boxes */}}
+{{- if or (env "CODESPACES") (env "REMOTE_CONTAINERS_IPC") (eq .chezmoi.username "root" "ubuntu" "vagrant" "vscode") -}}
+{{-   $ephemeral = true -}}
+{{-   $headless = true -}}
+{{- end -}}
+
+{{- $hostname := .chezmoi.hostname -}}
+
+{{- if not $ephemeral -}}
+{{-   if eq $hostname "alex-pc" -}}
+{{-     $personal = true -}}
+{{-   else if eq $hostname "voyager" -}}
+{{-     $personal = true -}}
+{{-   else if eq $hostname "moon" -}}
+{{-     $headless = true -}}
+{{-     $personal = true -}}
+{{-   else if stdinIsATTY -}}
+{{-     $headless = promptBoolOnce . "headless" "headless" -}}
+{{-     $ephemeral = promptBoolOnce . "ephemeral" "ephemeral" -}}
+{{-     $work = promptBoolOnce . "work" "work" -}}
+{{-   else -}}
+{{-     $ephemeral = true -}}
+{{-     $headless = true -}}
+{{-   end -}}
+{{- end -}}
+
 sourceDir = {{ .chezmoi.sourceDir | quote }}
 
 [hooks.read-source-state.pre]
     command = ".local/share/chezmoi/.install-password-manager.sh"
 
 [data]
+    work = {{ $work }}
+    headless = {{ $headless }}
+    hostname = {{ $hostname | quote }}
+    personal = {{ $personal }}
     osid = {{ $osid | quote }}
     name = "Alexander Epaneshnikov"
     codespaces = {{ $codespaces }}
+    ephemeral = {{ $ephemeral }}
     {{- if $codespaces }}{{/* Codespaces dotfiles setup is non-interactive, so set an email address */}}
     email = "aarnaarn2@gmail.com"
     myGpgKey = "none"
-    work = false
     {{- else }}{{/* Interactive setup, so prompt for an email address */}}
     email = {{ promptString "email" "aarnaarn2@gmail.com" | quote }}
     myGpgKey = {{ promptString "gpg key fingerprint" "6C7F7F22E0152A6FD5728592DAD6F3056C897266" | quote }}
-    work = {{ promptBool "is it a work computor?" false }}
     {{- end }}
+
+[github]
+    refreshPeriod = "12h"
