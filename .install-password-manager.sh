@@ -60,7 +60,7 @@ Linux)
     fi
 
     # Extract and install
-    cd /tmp
+    cd /tmp || exit
     tar -xzf rbw.tar.gz
     mv rbw ~/.local/bin/
     mv rbw-agent* ~/.local/bin/
