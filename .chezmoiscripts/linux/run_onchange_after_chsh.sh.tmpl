@@ -1,4 +1,4 @@
-{{- if (not .ephemeral) -}}
+{{- if (or (not .ephemeral) (not .work)) -}}
 #!/bin/bash
 
 set -eufo pipefail
