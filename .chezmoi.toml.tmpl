@@ -4,7 +4,12 @@
 {{- $headless := false -}}{{/* true if this machine does not have a screen and keyboard */}}
 {{- $personal := false -}}{{/* true if this machine should have personal secrets */}}
 
-{{- $codespaces:= env "CODESPACES" | not | not -}}
+{{- $email := "aarnaarn2@gmail.com" -}}
+{{- $myGpgKey := "6C7F7F22E0152A6FD5728592DAD6F3056C897266" -}}
+{{- $email = promptStringOnce . "email" "email" "aarnaarn2@gmail.com" -}}
+{{- $myGpgKey = promptStringOnce . "myGpgKey" "gpg key fingerprint" "6C7F7F22E0152A6FD5728592DAD6F3056C897266" -}}
+
+{{- $codespaces := env "CODESPACES" | not | not -}}
 {{- $osid := .chezmoi.os -}}
 {{- if hasKey .chezmoi.osRelease "id" -}}
 {{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
@@ -69,8 +74,8 @@ exclude = ["encrypted"]
     email = "aarnaarn2@gmail.com"
     myGpgKey = "none"
     {{- else }}{{/* Interactive setup, so prompt for an email address */}}
-    email = {{ promptString "email" "aarnaarn2@gmail.com" | quote }}
-    myGpgKey = {{ promptString "gpg key fingerprint" "6C7F7F22E0152A6FD5728592DAD6F3056C897266" | quote }}
+    email = {{ $email | quote }}
+    myGpgKey = {{ $myGpgKey | quote }}
     {{- end }}
 
 [github]
