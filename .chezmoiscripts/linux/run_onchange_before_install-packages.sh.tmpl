@@ -1,7 +1,6 @@
-{{ if eq .osid "linux-debian" "linux-ubuntu" "linux-arch" -}}
+{{ if eq .osid "linux-debian" "linux-ubuntu" "linux-arch" "linux-sberos" -}}
 
 {{ $packages := list
-     "atuin"
      "curl"
      "direnv"
      "fzf"
