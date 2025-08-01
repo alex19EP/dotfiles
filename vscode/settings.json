@@ -90,7 +90,7 @@
 		"!yaml": true,
 		"!yml": true,
 		"plaintext": true,
-		"shellscript": true,
+		"shellscript": false,
 		"xmake": false
 	},
 	"github-actions.org-features": true,
