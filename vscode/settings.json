@@ -1,0 +1,234 @@
+{
+	"editor.accessibilitySupport": "on",
+	"editor.accessibilityPageSize": 50,
+	"editor.insertSpaces": false,
+	"editor.formatOnPaste": true,
+	"editor.acceptSuggestionOnEnter": "smart",
+	"editor.tabCompletion": "on",
+	"editor.stickyTabStops": true,
+	"search.seedOnFocus": true,
+	"files.hotExit": "off",
+	"security.workspace.trust.emptyWindow": true,
+	"extensions.supportUntrustedWorkspaces": {
+		"streetsidesoftware.code-spell-checker": {
+			"supported": true
+		},
+		"streetsidesoftware.code-spell-checker-russian": {
+			"supported": true
+		}
+	},
+	"files.autoGuessEncoding": true,
+	"files.insertFinalNewline": true,
+	"files.trimTrailingWhitespace": true,
+	"files.trimFinalNewlines": true,
+	"breadcrumbs.filePath": "last",
+	"terminal.integrated.rightClickBehavior": "default",
+	"terminal.integrated.enablePersistentSessions": false,
+	"remote.SSH.remotePlatform": {
+		"moon": "linux"
+	},
+	"workbench.startupEditor": "none",
+	"workbench.editor.labelFormat": "medium",
+	"workbench.editor.closeOnFileDelete": false,
+	"workbench.editor.showTabs": "single",
+	"explorer.enableDragAndDrop": false,
+	"explorer.confirmDelete": false,
+	"explorer.incrementalNaming": "smart",
+	"cSpell.language": "en,ru,en-US",
+	"C_Cpp.experimentalFeatures": "enabled",
+	"git.defaultCloneDirectory": "~/repos",
+	"git.inputValidation": true,
+	"git.untrackedChanges": "separate",
+	"git.autofetch": true,
+	"git.pruneOnFetch": true,
+	"window.restoreWindows": "all",
+	"window.newWindowDimensions": "maximized",
+	"[markdown]": {
+		"files.trimTrailingWhitespace": false,
+		"editor.wordWrap": "off"
+	},
+	"[diff]": {
+		"files.trimTrailingWhitespace": false
+	},
+	"[meson]": {
+		"editor.insertSpaces": true
+	},
+	"git.confirmSync": false,
+	"gitHistory.showEditorTitleMenuBarIcons": false,
+	"gitHistory.sourceCodeProviderIntegrationLocation": "More Actions",
+	"files.autoSave": "onFocusChange",
+	"settingsSync.ignoredExtensions": [
+		"ms-vscode-remote.remote-wsl",
+		"ms-vscode.powershell"
+	],
+	"files.defaultLanguage": "plaintext",
+	"extensions.closeExtensionDetailsOnViewChange": true,
+	"cmake.configureOnOpen": false,
+	"workbench.settings.settingsSearchTocBehavior": "hide",
+	"terminal.external.windowsExec": "wt.exe",
+	"diffEditor.ignoreTrimWhitespace": false,
+	"cmake.generator": "Ninja",
+	"shellcheck.customArgs": [
+		"-a"
+	],
+	"shellcheck.enableQuickFix": true,
+	"shellcheck.useWorkspaceRootAsCwd": true,
+	"shellcheck.ignoreFileSchemes": [
+		"PKGBUILD"
+	],
+	"python.showStartPage": false,
+	"python.insidersChannel": "daily",
+	"python.autoComplete.addBrackets": true,
+	"python.languageServer": "Pylance",
+	"python.analysis.completeFunctionParens": true,
+	"codespaces.accountProvider": "GitHub",
+	"workbench.editorAssociations": {
+		"*.ipynb": "jupyter-notebook"
+	},
+	"cSpell.enabledFileTypes": {
+		"!po": true,
+		"!yaml": true,
+		"!yml": true,
+		"plaintext": true,
+		"shellscript": true,
+		"xmake": false
+	},
+	"github-actions.org-features": true,
+	"githubPullRequests.defaultMergeMethod": "rebase",
+	"editor.suggestSelection": "first",
+	"vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+	"workbench.editor.decorations.badges": true,
+	"workbench.editor.enablePreviewFromCodeNavigation": true,
+	"mesonbuild.configureOnOpen": false,
+	"C_Cpp.default.cppStandard": "c++17",
+	"C_Cpp.default.cStandard": "c17",
+	"C_Cpp.intelliSenseEngineFallback": "Enabled",
+	"terminal.integrated.tabs.enabled": true,
+	"notebook.cellToolbarLocation": {
+		"default": "right",
+		"jupyter-notebook": "left"
+	},
+	"extensions.autoUpdate": "onlyEnabledExtensions",
+	"redhat.telemetry.enabled": true,
+	"webview.experimental.useIframes": true,
+	"files.associations": {
+		"neomutt-*": "plaintext",
+		"COMMIT_EDITMSG": "git-commit",
+		"PKGBUILD": "shellscript"
+	},
+	"merge-conflict.autoNavigateNextConflict.enabled": true,
+	"workbench.editor.languageDetection": false,
+	"files.exclude": {
+		"**/.classpath": true,
+		"**/.project": true,
+		"**/.settings": true,
+		"**/.factorypath": true
+	},
+	"[rust]": {
+		"editor.formatOnPaste": true,
+		"editor.formatOnSave": true,
+		"editor.formatOnSaveMode": "modificationsIfAvailable"
+	},
+	"rust-analyzer.updates.askBeforeDownload": false,
+	"rust-analyzer.updates.channel": "nightly",
+	"editor.foldingImportsByDefault": true,
+	"editor.formatOnSaveMode": "modifications",
+	"editor.quickSuggestions": {
+		"other": "off",
+		"comments": "off",
+		"strings": "off"
+	},
+	"remote.SSH.enableRemoteCommand": true,
+	"[python]": {
+		"editor.formatOnType": true
+	},
+	"gitlens.rebaseEditor.ordering": "asc",
+	"accessibility.verbosity.notification": false,
+	"accessibility.verbosity.terminal": false,
+	"terminal.integrated.tabFocusMode": true,
+	"accessibility.verbosity.hover": false,
+	"Lua.runtime.version": "Lua 5.2",
+	"terminal.integrated.enableVisualBell": true,
+	"liveshare.publishWorkspaceInfo": true,
+	"accessibility.verbosity.diffEditor": false,
+	"accessibility.signalOptions.debouncePositionChanges": true,
+	"json.maxItemsComputed": 500000,
+	"[json]": {
+		"editor.defaultFormatter": "vscode.json-language-features"
+	},
+	"extensions.trustedPublishers": [
+		"aaron-bond",
+		"adam-bender",
+		"asabil",
+		"bierner",
+		"chiehyu",
+		"coolbear",
+		"davidanson",
+		"donjayamanne",
+		"dotjoshjohnson",
+		"eamodio",
+		"editorconfig",
+		"esbenp",
+		"felipecaputo",
+		"gitlab",
+		"jebbs",
+		"jeff-hykin",
+		"johnnymorganz",
+		"johnstoncode",
+		"josetr",
+		"justarandomgeek",
+		"lextudio",
+		"lukas-tr",
+		"luveti",
+		"me-dutour-mathieu",
+		"mkhl",
+		"mrorz",
+		"petli-full",
+		"polypus74",
+		"redhat",
+		"runarsf",
+		"rust-lang",
+		"skellock",
+		"stkb",
+		"streetsidesoftware",
+		"sumneko",
+		"tamasfe",
+		"trond-snekvik",
+		"twxs",
+		"vadimcn",
+		"vue",
+		"esphome"
+	],
+	"cmake.showOptionsMovedNotification": false,
+	"terminal.external.linuxExec": "gnome-terminal",
+	"github.copilot.chat.localeOverride": "en",
+	"github.copilot.chat.codesearch.enabled": true,
+	"github.copilot.chat.agent.thinkingTool": true,
+	"accessibility.signals.progress": {
+		"sound": "auto",
+		"announcement": "off"
+	},
+	"accessibility.signals.voiceRecordingStarted": {
+		"sound": "auto"
+	},
+	"accessibility.signals.positionHasError": {
+		"sound": "auto",
+		"announcement": "off"
+	},
+	"accessibility.signals.positionHasWarning": {
+		"sound": "auto",
+		"announcement": "off"
+	},
+	"accessibility.signals.positionHasInfo": {
+		"sound": "auto",
+		"announcement": "off"
+	},
+	"accessibility.signals.positionHasSuccess": {
+		"sound": "auto",
+		"announcement": "off"
+	},
+	"accessibility.signals.positionHasDebug": {
+		"sound": "auto",
+		"announcement": "off"
+	}
+}

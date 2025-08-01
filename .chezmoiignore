@@ -5,4 +5,5 @@ allowed_signers
 {{- if (or (not .personal) (.headless)) }}
 .ssh/id_ed25519_sk
 .ssh/id_ed25519_sk.pub
-{{ end -}}
+{{ end }}
+vscode
