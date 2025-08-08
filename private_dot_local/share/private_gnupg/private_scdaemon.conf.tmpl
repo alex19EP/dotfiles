@@ -3,6 +3,6 @@ pcsc-driver /usr/lib/x86_64-linux-gnu/libpcsclite.so.1
 {{- else -}}
 pcsc-driver /usr/lib/libpcsclite.so
 {{- end }}
-card-timeout 5
 disable-ccid
 pcsc-shared
+disable-application piv
