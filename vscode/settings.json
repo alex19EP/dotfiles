@@ -39,7 +39,6 @@
 	"git.defaultCloneDirectory": "~/repos",
 	"git.inputValidation": true,
 	"git.untrackedChanges": "separate",
-	"git.autofetch": true,
 	"git.pruneOnFetch": true,
 	"window.restoreWindows": "all",
 	"window.newWindowDimensions": "maximized",
@@ -73,9 +72,6 @@
 	],
 	"shellcheck.enableQuickFix": true,
 	"shellcheck.useWorkspaceRootAsCwd": true,
-	"shellcheck.ignoreFileSchemes": [
-		"PKGBUILD"
-	],
 	"python.showStartPage": false,
 	"python.insidersChannel": "daily",
 	"python.autoComplete.addBrackets": true,
@@ -113,8 +109,7 @@
 	"webview.experimental.useIframes": true,
 	"files.associations": {
 		"neomutt-*": "plaintext",
-		"COMMIT_EDITMSG": "git-commit",
-		"PKGBUILD": "shellscript"
+		"COMMIT_EDITMSG": "git-commit"
 	},
 	"merge-conflict.autoNavigateNextConflict.enabled": true,
 	"workbench.editor.languageDetection": false,

@@ -35,6 +35,9 @@ if (( $+commands[trash-put] )); then
     export NNN_TRASH=1
 fi
 
+# less
+export LESS='-g -i -M -R -w -z-4'
+
 # nb
 export NBRC_PATH="$XDG_CONFIG_HOME/nbrc"
 
