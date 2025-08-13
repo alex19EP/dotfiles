@@ -225,5 +225,6 @@
 	"accessibility.signals.positionHasDebug": {
 		"sound": "auto",
 		"announcement": "off"
-	}
+	},
+	"editor.editContext": false
 }
