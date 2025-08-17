@@ -1,6 +1,7 @@
-{{ if eq .osid "linux-debian" "linux-ubuntu" "linux-arch" "linux-sberos" -}}
+{{ if eq .osid "linux-debian" "linux-arch" "linux-sberos" -}}
 
 {{ $packages := list
+     "atuin"
      "curl"
      "direnv"
      "fzf"
@@ -13,6 +14,7 @@
      "ripgrep"
      "rustup"
      "nano"
+     "pcsclite"
      "tealdeer"
      "shellcheck"
      "urlscan"
@@ -21,6 +23,27 @@
 -}}
 {{ if not .headless -}}
 {{   $packages = mustAppend $packages "wl-clipboard" -}}
+{{ end -}}
+
+{{/* Map canonical names -> per-distro package names (only specify differences). */ -}}
+{{ $pkgOverrides := dict
+  "linux-debian" (dict
+    "pcsclite" "libpcsclite1"
+  )
+-}}
+
+{{/* Resolve per-distro package names. Unspecified packages keep their canonical names. */ -}}
+{{ $resolved := list -}}
+{{ $over := dict -}}
+{{ if hasKey $pkgOverrides .osid -}}
+{{   $over = index $pkgOverrides .osid -}}
+{{ end -}}
+{{ range $packages -}}
+{{   $name := . -}}
+{{   if and $over (hasKey $over .) -}}
+{{     $name = index $over . -}}
+{{   end -}}
+{{   $resolved = mustAppend $resolved $name -}}
 {{ end -}}
 
 {{ $sudo := "sudo " -}}
@@ -32,6 +55,6 @@
 
 set -eufo pipefail
 
-{{ $sudo }}{{ template "pmInstall" . }} {{ $packages | join " " }}
+{{ $sudo }}{{ template "pmInstall" . }} {{ $resolved | join " " }}
 
 {{ end -}}

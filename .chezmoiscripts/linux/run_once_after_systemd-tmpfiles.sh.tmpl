@@ -1,0 +1,6 @@
+{{ if lookPath "systemd-tmpfiles" -}}
+#!/bin/bash
+set -eufo pipefail
+
+systemd-tmpfiles --user --boot --create
+{{ end -}}

@@ -1,4 +1,4 @@
-{{ if and (eq .chezmoi.os "linux") (not .headless) -}}
+{{ if and (eq .chezmoi.os "linux") (not .headless) (or (lookPath "code") (lookPath "code-insiders")) -}}
 
 {{ $extensions := list
      "davidanson.vscode-markdownlint"
