@@ -1,7 +1,7 @@
-{{- if eq .osid "linux-debian" "linux-sberos" -}}
+{{- if eq .osid "linux-debian" -}}
 pcsc-driver /usr/lib/x86_64-linux-gnu/libpcsclite.so.1
 {{- else -}}
-pcsc-driver /usr/lib/libpcsclite.so
+pcsc-driver /usr/lib/libpcsclite.so.1
 {{- end }}
 disable-ccid
 pcsc-shared
