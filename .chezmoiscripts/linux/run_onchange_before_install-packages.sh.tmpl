@@ -1,7 +1,6 @@
 {{ if eq .osid "linux-debian" "linux-arch" -}}
 
 {{ $packages := list
-     "atuin"
      "curl"
      "direnv"
      "fzf"
@@ -21,8 +20,19 @@
      "zoxide"
      "zsh"
 -}}
+{{ if not .sberos -}}
+{{   $packages = mustAppend $packages "atuin" -}}
+{{ end -}}
+
+{{/* Wayland detection */ -}}
+{{ $wayland := or (eq (env "XDG_SESSION_TYPE") "wayland") (env "WAYLAND_DISPLAY" | not | not) -}}
+
 {{ if not .headless -}}
-{{   $packages = mustAppend $packages "wl-clipboard" -}}
+{{   if $wayland -}}
+{{     $packages = mustAppend $packages "wl-clipboard" -}}
+{{   else -}}
+{{     $packages = mustAppend $packages "xclip" -}}
+{{   end -}}
 {{ end -}}
 
 {{/* Map canonical names -> per-distro package names (only specify differences). */ -}}
