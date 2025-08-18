@@ -1,0 +1,3 @@
+urls-source "miniflux"
+miniflux-url "{{ (index (rbw "miniflux").data.uris 0).uri }}"
+miniflux-token "{{ (rbwFields "miniflux").nbtoken.value }}"
