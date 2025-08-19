@@ -1,0 +1,5 @@
+{{- if lookPath "sberbrowser-browser" -}}
+{{- printf "sberbrowser-browser" -}}
+{{- else -}}
+{{- printf "firefox" -}}
+{{- end -}}

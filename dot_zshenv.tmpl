@@ -23,7 +23,7 @@ export VISUAL="$(if [[ -n $DISPLAY || $TERM_PROGRAM = vscode ]]; then echo '{{ t
 
 # browser
 if [ -n "$DISPLAY" ]; then
-    export BROWSER="firefox"
+    export BROWSER="{{ template "browser" }}"
 else
     export BROWSER=w3m
 fi
