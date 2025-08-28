@@ -8,29 +8,29 @@ Sync All
 # gmail
 IMAPAccount gmail
 Host imap.gmail.com
-User aarnaarn2@gmail.com
-PassCmd "rbw get -f apppassword/linux@alex-pc google"
+User {{ (rbw "google").data.username }}
+Pass {{ (rbwFields "google").apppassword_linux.value  }}
 TLSType IMAPS
 
 # personal
 IMAPAccount personal
 Host mail.alex19ep.me
-User email@alex19ep.me
-PassCmd "rbw get 'my email'"
+User {{ (rbw "my email").data.username }}
+Pass {{ (rbw "my email").data.password }}
 TLSType IMAPS
 
 # admin
 IMAPAccount admin
 Host mail.alex19ep.me
-User admin@alex19ep.me
-PassCmd "rbw get 'admin email'"
+User {{ (rbw "admin email").data.username }}
+Pass {{ (rbw "admin email").data.password }}
 TLSType IMAPS
 
 # arch linux
 IMAPAccount arch
 Host mail.archlinux.org
-User alex19ep@archlinux.org
-PassCmd "rbw get 'arch email'"
+User {{ (rbw "arch email").data.username }}
+Pass {{ (rbw "arch email").data.password }}
 TLSType IMAPS
 
 IMAPStore gmail-remote

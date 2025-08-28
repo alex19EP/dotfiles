@@ -5,9 +5,9 @@
   "tlsOptions": {
     "rejectUnauthorized": true
   },
-  "username": "email@alex19ep.me",
-  "passwordCmd": "rbw get 'my email'",
-  "onNewMail": "/usr/bin/mbsync -q -c ~/.config/isync/mbsyncrc personal",
+  "username": "{{ (rbw "admin email").data.username }}",
+  "password": "{{ (rbw "admin email").data.password }}",
+  "onNewMail": "/usr/bin/mbsync -q -c ~/.config/isync/mbsyncrc admin:INBOX",
   "onNewMailPost": "/usr/bin/notmuch new --quiet",
   "boxes": [ "INBOX" ]
 }

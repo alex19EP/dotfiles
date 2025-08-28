@@ -1,0 +1,13 @@
+{
+  "host": "imap.gmail.com",
+  "port": 993,
+  "tls": true,
+  "tlsOptions": {
+    "rejectUnauthorized": true
+  },
+  "username": "{{ (rbw "google").data.username }}",
+  "password": "{{ (rbwFields "google").apppassword_linux.value  }}",
+  "onNewMail": "/usr/bin/mbsync -q -c ~/.config/isync/mbsyncrc gmail:INBOX",
+  "onNewMailPost": "/usr/bin/notmuch new --quiet",
+  "boxes": [ "INBOX" ]
+}

@@ -5,9 +5,9 @@
   "tlsOptions": {
     "rejectUnauthorized": true
   },
-  "username": "alex19ep@archlinux.org",
-  "passwordCmd": "rbw get 'arch email'",
-  "onNewMail": "/usr/bin/mbsync -q -c ~/.config/isync/mbsyncrc arch",
+  "username": "{{ (rbw "arch email").data.username }}",
+  "password": "{{ (rbw "arch email").data.password }}",
+  "onNewMail": "/usr/bin/mbsync -q -c ~/.config/isync/mbsyncrc arch:INBOX",
   "onNewMailPost": "/usr/bin/notmuch new --quiet",
   "boxes": [ "INBOX" ]
 }
