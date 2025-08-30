@@ -36,12 +36,10 @@ set index_format='%4C %Z %<[y?%<[m?%<[d?%[%H:%M ]&%[%a %d]>&%[%b %d]>&%[%m/%y ]>
 set display_filter="exec sed -r \"s/^Date:\\s*(([F-Wa-u]{3},\\s*)?[[:digit:]]{1,2}\\s+[A-Sa-y]{3}\\s+[[:digit:]]{4}\\s+[[:digit:]]{1,2}:[[:digit:]]{1,2}(:[[:digit:]]{1,2})?\\s+[+-][[:digit:]]{4})/date +'Date: %a, %d %b %Y %H:%M:%S %z' -d '\\1'/e\""
 set wait_key = no
 
-## Make quick html view macro
-unbind index,pager V
 bind index,pager \Cf vfolder-from-query
 unbind index,pager D
 bind index,pager D purge-message
-macro index,pager V "<view-attachments><search>html<enter><view-mailcap><exit>"
+macro index,pager \cv "<view-attachments><search>html<enter><view-mailcap><exit>"
 macro index S "<shell-escape>mbsync -ac ~/.config/isync/mbsyncrc<enter>" "run mbsync to sync all mail"
 macro index,pager \cb "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
 macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
