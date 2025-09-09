@@ -1,0 +1,1 @@
+{{- printf "--force-renderer-accessibility --enable-caret-browsing --gtk-version=4 --ozone-platform-hint=auto --enable-features=WaylandWindowDecorations --enable-features=WebRTCPipeWireCapturer" -}}
