@@ -44,9 +44,16 @@ export NBRC_PATH="$XDG_CONFIG_HOME/nbrc"
 # .local/bin
 export PATH="$HOME/.local/bin:$PATH"
 
+export BC_ENV_ARGS="-lq"
+
 # cargo
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export PATH="$CARGO_HOME/bin:$PATH"
 
 # go
 export PATH="$HOME/go/bin:$PATH"
+
+{{- if eq .osid "linux-debian" -}}
+export DEBEMAIL={{ .email }}
+export DEBFULLNAME={{ .name }}
+{{- end }}

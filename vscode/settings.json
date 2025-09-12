@@ -229,5 +229,8 @@
 	"editor.editContext": false,
 	"security.workspace.trust.untrustedFiles": "open",
 	"python.defaultInterpreterPath": "/bin/python",
-	"window.menuStyle": "native"
+	"window.menuStyle": "native",
+	"accessibility.verbosity.panelChat": false,
+	"python.analysis.typeCheckingMode": "basic",
+	"mesonbuild.downloadLanguageServer": true
 }

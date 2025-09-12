@@ -80,3 +80,5 @@
 	provider = generic
 [include]
 	path = ~/.config/git/config-personal
+[credential "https://salsa.debian.org"]
+	provider = generic

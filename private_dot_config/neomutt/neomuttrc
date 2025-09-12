@@ -20,6 +20,7 @@ set use_from = yes
 set envelope_from = yes
 set fast_reply = yes
 set include = yes
+set abort_unmodified = no
 set pager_stop
 set status_on_top
 set beep_new
