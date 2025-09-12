@@ -233,4 +233,76 @@
 	"accessibility.verbosity.panelChat": false,
 	"python.analysis.typeCheckingMode": "basic",
 	"mesonbuild.downloadLanguageServer": true
+	"accessibility.signals.lineHasError": {
+		"sound": "auto",
+		"announcement": "off"
+	},
+	"accessibility.signals.lineHasWarning": {
+		"sound": "auto",
+		"announcement": "off"
+	},
+	"accessibility.signals.lineHasFoldedArea": {
+		"sound": "auto",
+		"announcement": "off"
+	},
+	"accessibility.signals.lineHasBreakpoint": {
+		"sound": "auto",
+		"announcement": "off"
+	},
+	"accessibility.signals.terminalQuickFix": {
+		"sound": "auto",
+		"announcement": "off"
+	},
+	"accessibility.signals.onDebugBreak": {
+		"sound": "auto",
+		"announcement": "off"
+	},
+	"accessibility.signals.noInlayHints": {
+		"sound": "auto",
+		"announcement": "off"
+	},
+	"accessibility.signals.taskCompleted": {
+		"sound": "auto",
+		"announcement": "off"
+	},
+	"accessibility.signals.taskFailed": {
+		"sound": "auto",
+		"announcement": "off"
+	},
+	"accessibility.signals.terminalCommandFailed": {
+		"sound": "auto",
+		"announcement": "off"
+	},
+	"accessibility.signals.terminalBell": {
+		"sound": "auto",
+		"announcement": "off"
+	},
+	"accessibility.signals.notebookCellCompleted": {
+		"sound": "auto",
+		"announcement": "off"
+	},
+	"accessibility.signals.notebookCellFailed": {
+		"sound": "auto",
+		"announcement": "off"
+	},
+	"accessibility.signals.chatRequestSent": {
+		"sound": "auto",
+		"announcement": "off"
+	},
+	"accessibility.signals.codeActionTriggered": {
+		"sound": "auto",
+		"announcement": "off"
+	},
+	"accessibility.signals.clear": {
+		"sound": "auto",
+		"announcement": "off"
+	},
+	"accessibility.signals.format": {
+		"sound": "userGesture",
+		"announcement": "never"
+	},
+	"accessibility.signals.save": {
+		"sound": "userGesture",
+		"announcement": "never"
+	}
 }
