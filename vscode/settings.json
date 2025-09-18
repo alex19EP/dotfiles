@@ -232,7 +232,7 @@
 	"window.menuStyle": "native",
 	"accessibility.verbosity.panelChat": false,
 	"python.analysis.typeCheckingMode": "basic",
-	"mesonbuild.downloadLanguageServer": true
+	"mesonbuild.downloadLanguageServer": true,
 	"accessibility.signals.lineHasError": {
 		"sound": "auto",
 		"announcement": "off"
@@ -290,8 +290,7 @@
 		"announcement": "off"
 	},
 	"accessibility.signals.codeActionTriggered": {
-		"sound": "auto",
-		"announcement": "off"
+		"sound": "auto"
 	},
 	"accessibility.signals.clear": {
 		"sound": "auto",
