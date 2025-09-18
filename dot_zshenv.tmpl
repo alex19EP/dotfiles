@@ -54,6 +54,6 @@ export PATH="$CARGO_HOME/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 
 {{- if eq .osid "linux-debian" -}}
-export DEBEMAIL={{ .email }}
-export DEBFULLNAME={{ .name }}
+export DEBEMAIL={{ .email | quote }}
+export DEBFULLNAME={{ .name | quote }}
 {{- end }}
