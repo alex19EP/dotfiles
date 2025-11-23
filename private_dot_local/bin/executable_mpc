@@ -1,6 +1,0 @@
-#!/bin/sh
-
-# Use full path to avoid calling this script recursively
-REAL_MPC=/usr/bin/mpc
-
-MPC_FORMAT="%title% [\n\t%artist%][\n\t%album%]" exec $REAL_MPC "$@"

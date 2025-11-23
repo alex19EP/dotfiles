@@ -25,6 +25,7 @@ ohmyzsh/ohmyzsh path:plugins/sudo
 ohmyzsh/ohmyzsh path:plugins/tldr
 ohmyzsh/ohmyzsh path:plugins/vscode
 ohmyzsh/ohmyzsh path:plugins/zoxide
+mass8326/zsh-chezmoi
 mellbourn/zabb
 amyreese/zsh-take
 akash329d/zsh-alias-finder
