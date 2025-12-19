@@ -43,6 +43,9 @@ export NBRC_PATH="$XDG_CONFIG_HOME/nbrc"
 
 # .local/bin
 export PATH="$HOME/.local/bin:$PATH"
+{{- if or (eq .osid "linux-debian") (eq .osid "linux-ubuntu") -}}
+export PATH="/usr/sbin:$PATH"
+{{- end }}
 
 export BC_ENV_ARGS="-lq"
 
