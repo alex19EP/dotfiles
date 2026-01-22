@@ -65,8 +65,10 @@ watch = true
 [status]
 exclude = ["encrypted"]
 
+{{- if ne .chezmoi.os "windows" }}
 [hooks.read-source-state.pre]
     command = ".local/share/chezmoi/.install-password-manager.sh"
+{{- end }}
 
 [data]
     work = {{ $work }}
