@@ -1,0 +1,45 @@
+{
+  "model": "opus",
+  "enabledPlugins": {
+    "context7@claude-plugins-official": false,
+    "feature-dev@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": true,
+    "clangd-lsp@claude-plugins-official": true,
+    "csharp-lsp@claude-plugins-official": true,
+    "lua-lsp@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": false,
+    "serena@claude-plugins-official": true,
+    "ralph-loop@claude-plugins-official": false,
+    "pyright-lsp@claude-plugins-official": true,
+    "greptile@claude-plugins-official": true,
+    "hookify@claude-plugins-official": false,
+    "jdtls-lsp@claude-plugins-official": true,
+    "claude-code-setup@claude-plugins-official": true,
+    "claude-md-management@claude-plugins-official": true
+  },
+  "alwaysThinkingEnabled": true,
+  "autoUpdatesChannel": "latest",
+  "plansDirectory": "./docs/plans",
+  "enableAllProjectMcpServers": true,
+  "permissions": {
+    "allow": ["Bash(git:*)", "Edit(src/**)"],
+    "deny": ["Read(.env*)", "Bash(rm -rf:*)"]
+  },
+  "env": {
+    "ENABLE_TOOL_SEARCH": "auto:5",
+    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "85"
+  },
+  "language": "english",
+    "sandbox": {
+    "enabled": true,
+    "autoAllowBashIfSandboxed": true
+  },
+  "showTurnDuration": true,
+  "spinnerTipsEnabled": false,
+  "terminalProgressBarEnabled": false,
+    "attribution": {
+    "commit": "Co-Authored-By: Claude <noreply@anthropic.com>",
+    "pr": ""
+  }
+}
