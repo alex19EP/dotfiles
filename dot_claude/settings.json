@@ -1,7 +1,26 @@
 {
+  "env": {
+    "ENABLE_TOOL_SEARCH": "auto:5",
+    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "85"
+  },
+  "attribution": {
+    "commit": "Co-Authored-By: Claude <noreply@anthropic.com>",
+    "pr": ""
+  },
+  "permissions": {
+    "allow": [
+      "Bash(git:*)",
+      "Edit(src/**)"
+    ],
+    "deny": [
+      "Read(.env*)",
+      "Bash(rm -rf:*)"
+    ]
+  },
   "model": "opus",
+  "enableAllProjectMcpServers": true,
   "enabledPlugins": {
-    "context7@claude-plugins-official": false,
+    "context7@claude-plugins-official": true,
     "feature-dev@claude-plugins-official": true,
     "commit-commands@claude-plugins-official": true,
     "clangd-lsp@claude-plugins-official": true,
@@ -12,34 +31,22 @@
     "serena@claude-plugins-official": true,
     "ralph-loop@claude-plugins-official": false,
     "pyright-lsp@claude-plugins-official": true,
-    "greptile@claude-plugins-official": true,
     "hookify@claude-plugins-official": false,
     "jdtls-lsp@claude-plugins-official": true,
     "claude-code-setup@claude-plugins-official": true,
-    "claude-md-management@claude-plugins-official": true
-  },
-  "alwaysThinkingEnabled": true,
-  "autoUpdatesChannel": "latest",
-  "plansDirectory": "./docs/plans",
-  "enableAllProjectMcpServers": true,
-  "permissions": {
-    "allow": ["Bash(git:*)", "Edit(src/**)"],
-    "deny": ["Read(.env*)", "Bash(rm -rf:*)"]
-  },
-  "env": {
-    "ENABLE_TOOL_SEARCH": "auto:5",
-    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "85"
+    "claude-md-management@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true
   },
   "language": "english",
-    "sandbox": {
+  "sandbox": {
     "enabled": false,
     "autoAllowBashIfSandboxed": true
   },
-  "showTurnDuration": true,
   "spinnerTipsEnabled": false,
-  "terminalProgressBarEnabled": false,
-    "attribution": {
-    "commit": "Co-Authored-By: Claude <noreply@anthropic.com>",
-    "pr": ""
-  }
+  "alwaysThinkingEnabled": true,
+  "autoUpdatesChannel": "latest",
+  "plansDirectory": "./docs/plans",
+  "showTurnDuration": true,
+  "terminalProgressBarEnabled": false
 }
