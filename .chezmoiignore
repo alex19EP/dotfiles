@@ -16,4 +16,7 @@ vscode
 .config/imapnotify/personal.yaml
 .config/imapnotify/arch.yaml
 .config/imapnotify/admin.yaml
+# Security keys not supported yet
+.ssh/id_ed25519_sk
+.ssh/id_ed25519_sk.pub
 {{ end }}
