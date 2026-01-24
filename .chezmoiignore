@@ -7,3 +7,13 @@ allowed_signers
 .ssh/id_ed25519_sk.pub
 {{ end }}
 vscode
+{{- if eq .chezmoi.os "windows" }}
+# Files using rbw (not available on Windows)
+.local/bin/signoff
+.config/newsboat/config
+.config/isync/mbsyncrc
+.config/imapnotify/gmail.yaml
+.config/imapnotify/personal.yaml
+.config/imapnotify/arch.yaml
+.config/imapnotify/admin.yaml
+{{ end }}
