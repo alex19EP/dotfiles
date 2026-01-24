@@ -6,6 +6,10 @@
 [log]
 	abbrevCommit = true
 	date = relative
+{{- if eq .chezmoi.os "windows" }}
+[credential]
+	helper = manager
+{{- else }}
 [credential]
 	helper = /usr/lib/git-core/git-credential-libsecret
 	helper =
@@ -15,6 +19,7 @@
 	msauthFlow = devicecode
 	helper =
 	helper = /usr/bin/git-credential-manager
+{{- end }}
 [pull]
 	ff = only
 	autostash = true
@@ -47,9 +52,15 @@
 	directoryRenames = true
 [status]
 	showStash = true
+{{- if eq .chezmoi.os "windows" }}
+[credential "https://github.com"]
+	helper =
+	helper = !gh auth git-credential
+{{- else }}
 [credential "https://github.com"]
 	helper =
 	helper = !/usr/bin/gh auth git-credential
+{{- end }}
 [core]
 	untrackedCache = true
 [difftool "vscode"]
@@ -74,8 +85,10 @@
 	username = erik-pro
 [gitreview]
 	username = alex19EP
+{{- if ne .chezmoi.os "windows" }}
 [scalar]
 	repo = /home/alex/repos/linux/src
+{{- end }}
 [credential "https://opendev.org"]
 	provider = generic
 [include]
