@@ -1,4 +1,4 @@
-{{- if (not .ephemeral) -}}
+{{- if and (not .ephemeral) (ne .chezmoi.os "windows") -}}
 #!/bin/sh
 
 if [ ! -f "${HOME}/.config/chezmoi/key.txt" ]; then
