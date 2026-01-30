@@ -9,6 +9,7 @@ bind-key C-a last-window
 bind-key a send-prefix
 
 set-option -g set-titles on
+set-option -g set-titles-string '#{?session_alerts,🔔#{session_alerts} ,}#T - #W:#I-#S'
 set-option -g automatic-rename off
 set-option -g focus-events on
 set-option -sg escape-time 10
