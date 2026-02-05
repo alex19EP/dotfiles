@@ -44,6 +44,7 @@
     "autoAllowBashIfSandboxed": true
   },
   "spinnerTipsEnabled": false,
+  "prefersReducedMotion": true,
   "alwaysThinkingEnabled": true,
   "autoUpdatesChannel": "latest",
   "plansDirectory": "./docs/plans",
