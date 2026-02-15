@@ -45,10 +45,11 @@
     "autoAllowBashIfSandboxed": true
   },
   "spinnerTipsEnabled": false,
-  "prefersReducedMotion": true,
   "alwaysThinkingEnabled": true,
   "autoUpdatesChannel": "latest",
   "plansDirectory": "./docs/plans",
+  "prefersReducedMotion": true,
   "showTurnDuration": true,
-  "terminalProgressBarEnabled": false
+  "terminalProgressBarEnabled": false,
+  "effortLevel": "medium"
 }
