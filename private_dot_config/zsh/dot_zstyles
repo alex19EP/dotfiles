@@ -1,6 +1,6 @@
 zstyle ':antidote:bundle' use-friendly-names 'yes'
 zstyle ':antidote:static' zcompile 'yes'
 zstyle ':zephyr:plugin:editor' symmetric-ctrl-z 'yes'
-zstyle ':zephyr:plugin:editor' glob-alias 'yes'
+zstyle ':zephyr:plugin:editor' automatic-glob-alias 'yes'
 zstyle ':zephyr:plugin:environment' use-xdg-basedirs 'yes'
 zstyle ':zephyr:plugin:prompt' theme 'powerlevel10k'
