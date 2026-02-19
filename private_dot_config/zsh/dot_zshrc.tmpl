@@ -76,6 +76,9 @@ setopt NOMATCH
 # Use Emacs-like keybindings
 bindkey -e
 
+# Shift+Tab: reverse menu completion
+bindkey "$terminfo[kcbt]" reverse-menu-complete
+
 # search in history
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
