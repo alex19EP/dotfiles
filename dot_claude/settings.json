@@ -18,7 +18,6 @@
       "Bash(rm -rf:*)"
     ]
   },
-  "model": "opus",
   "enableAllProjectMcpServers": true,
   "enabledPlugins": {
     "context7@claude-plugins-official": true,
@@ -50,6 +49,5 @@
   "plansDirectory": "./docs/plans",
   "prefersReducedMotion": true,
   "showTurnDuration": true,
-  "terminalProgressBarEnabled": false,
-  "effortLevel": "medium"
+  "terminalProgressBarEnabled": false
 }
