@@ -228,7 +228,7 @@
 	},
 	"editor.editContext": false,
 	"security.workspace.trust.untrustedFiles": "open",
-	"python.defaultInterpreterPath": "/bin/python",
+	"python.defaultInterpreterPath": "/usr/bin/python",
 	"window.menuStyle": "native",
 	"accessibility.verbosity.panelChat": false,
 	"python.analysis.typeCheckingMode": "basic",
@@ -303,5 +303,6 @@
 	"accessibility.signals.save": {
 		"sound": "userGesture",
 		"announcement": "never"
-	}
+	},
+	"chat.tools.terminal.outputLocation": "chat"
 }
