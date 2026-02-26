@@ -1,5 +1,15 @@
 typeset -U PATH path
 
+{{- if eq .chezmoi.os "windows" }}
+
+# MSYS2 SSH session fixes
+if [[ -n "$MSYSTEM" ]]; then
+    export MSYS2_PATH_TYPE=inherit
+    [[ -z "$USERPROFILE" ]] && export USERPROFILE="C:\\Users\\$USER"
+    [[ -z "$LOCALAPPDATA" ]] && export LOCALAPPDATA="C:\\Users\\$USER\\AppData\\Local"
+fi
+{{- end }}
+
 # XDG
 XDG_DATA_HOME=$HOME/.local/share
 XDG_CONFIG_HOME=$HOME/.config

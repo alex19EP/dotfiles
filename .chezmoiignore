@@ -8,6 +8,8 @@ allowed_signers
 {{ end }}
 vscode
 {{- if eq .chezmoi.os "windows" }}
+# Windows NTFS junction points (unsupported file type)
+Шаблоны
 # Files using rbw (not available on Windows)
 .local/bin/signoff
 .config/newsboat/config
