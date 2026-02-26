@@ -1,4 +1,4 @@
-mattmc3/ez-compinit
+zchee/zsh-completions path:src/zsh kind:fpath
 getantidote/use-omz
 romkatv/zsh-bench    kind:path
 romkatv/powerlevel10k
@@ -13,15 +13,12 @@ mattmc3/zephyr path:plugins/history
 mattmc3/zephyr path:plugins/prompt
 mattmc3/zephyr path:plugins/utility
 mattmc3/zephyr path:plugins/zfunctions
-ohmyzsh/ohmyzsh path:plugins/adb kind:fpath
-ohmyzsh/ohmyzsh path:plugins/chezmoi
 ohmyzsh/ohmyzsh path:plugins/direnv
 ohmyzsh/ohmyzsh path:plugins/extract
 ohmyzsh/ohmyzsh path:plugins/fzf
 ohmyzsh/ohmyzsh path:plugins/git
 ohmyzsh/ohmyzsh path:plugins/rbw
 ohmyzsh/ohmyzsh path:plugins/systemadmin
-ohmyzsh/ohmyzsh path:plugins/sudo
 ohmyzsh/ohmyzsh path:plugins/tldr
 ohmyzsh/ohmyzsh path:plugins/vscode
 ohmyzsh/ohmyzsh path:plugins/zoxide

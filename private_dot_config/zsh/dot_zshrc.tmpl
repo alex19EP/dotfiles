@@ -20,28 +20,16 @@ antidote load
 HISTFILE="$XDG_STATE_HOME"/zsh/history
 WORDCHARS="${WORDCHARS/\//}"
 
-# zstyle
-zstyle ':completion:*' completer _expand_alias _complete _match  _approximate
+# zstyle overrides (base set by zephyr compstyle)
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]} m:{[:lower:][:upper:]}={[:upper:][:lower:]}'
-# do not complete . and .. special directories
 zstyle ':completion:*' special-dirs false
 zstyle ':completion:*' max-errors 1
 zstyle ':completion:*' use-compctl true
-zstyle ':completion:*' verbose true
 zstyle ':completion:*' list-grouped true
 zstyle ':completion:*' list-suffixes true
 zstyle ':completion::complete:*' gain-privileges 1
-# Ignore completion functions (until the _ignored completer)
 zstyle ':completion:*:functions' ignored-patterns '_*'
 zstyle ':completion:*:*:-command-:*:*' ignored-patterns '_*'
-# Ignore multiple entries.
-zstyle ':completion:*:(rm|kill|diff):*' ignore-line other
-zstyle ':completion:*:rm:*' file-patterns '*:all-files'
-# Kill
-zstyle ':completion:*:*:*:*:processes' command 'ps -u $LOGNAME -o pid,user,command -w'
-zstyle ':completion:*:*:kill:*' menu yes select
-zstyle ':completion:*:*:kill:*' force-list always
-zstyle ':completion:*:*:kill:*' insert-ids single
 
 autoload -Uz up-line-or-beginning-search down-line-or-beginning-search edit-command-line
 autoload -Uz run-help-git run-help-ip run-help-openssl run-help-sudo run-help-svn
@@ -56,16 +44,9 @@ TRAPUSR1() { rehash }
 # Do not offer completion functions as corrections
 CORRECT_IGNORE='_*'
 
-# History
-setopt HIST_IGNORE_SPACE
+# History overrides (base set by zephyr history)
 setopt HIST_NO_STORE
-setopt HIST_REDUCE_BLANKS
-setopt HIST_VERIFY
 setopt INC_APPEND_HISTORY_TIME
-setopt APPEND_HISTORY
-setopt EXTENDED_HISTORY
-setopt HIST_FIND_NO_DUPS
-setopt HIST_IGNORE_ALL_DUPS
 
 # Prompting
 setopt PROMPT_SUBST
@@ -84,6 +65,9 @@ zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey "$terminfo[kcuu1]" up-line-or-beginning-search
 bindkey "$terminfo[kcud1]" down-line-or-beginning-search
+
+# prepend sudo (Esc Esc)
+bindkey '\e\e' prepend-sudo
 
 # edit cmd
 zle -N edit-command-line
