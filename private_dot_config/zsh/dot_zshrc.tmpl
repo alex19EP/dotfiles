@@ -17,6 +17,10 @@ antidote load
 # aliases
 [ -f "${ZDOTDIR}/aliases" ] && source "${ZDOTDIR}/aliases" ||:
 
+# Clear terminal title at prompt so #T is empty unless a program sets it (e.g. Claude)
+function _term_title_precmd() { printf '\e]2;\e\\' }
+add-zsh-hook precmd _term_title_precmd
+
 HISTFILE="$XDG_STATE_HOME"/zsh/history
 WORDCHARS="${WORDCHARS/\//}"
 
