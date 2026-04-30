@@ -15,15 +15,17 @@ set-hook -g after-new-session 'select-pane -T ""'
 set-hook -g after-new-window  'select-pane -T ""'
 set-hook -g after-split-window 'select-pane -T ""'
 set-option -g focus-events on
-set-option -sg escape-time 10
-set-option -g focus-events on
-set-option -sa terminal-overrides ',xterm-256color:RGB'
+set-option -sg escape-time 0
+set-option -g allow-passthrough on
+set-option -g extended-keys on
+set-option -g set-clipboard on
 set-window-option -g aggressive-resize on
 set-option -g base-index 1
 set-option -g pane-base-index 1
 
-set-option -ga update-environment " UPTERM_ADMIN_SOCKET"
+set-option -ga update-environment " UPTERM_ADMIN_SOCKET GHOSTTY_RESOURCES_DIR GHOSTTY_BIN_DIR SSH_AUTH_SOCK WAYLAND_DISPLAY"
 set-option -g update-environment "DIRENV_DIFF DIRENV_DIR DIRENV_WATCHES"
+set-option -as terminal-features 'xterm-ghostty:RGB:hyperlinks:ccolour:cstyle:focus:mouse:osc7:overline:sixel:strikethrough:sync:title:usstyle:clipboard:extkeys'
 set-environment -gu DIRENV_DIFF
 set-environment -gu DIRENV_DIR
 set-environment -gu DIRENV_WATCHES
