@@ -2,11 +2,8 @@
   "env": {
     "ENABLE_TOOL_SEARCH": "auto:5",
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
-    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "85"
-  },
-  "attribution": {
-    "commit": "Co-Authored-By: Claude <noreply@anthropic.com>",
-    "pr": ""
+    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "85",
+    "CLAUDE_CODE_USE_POWERSHELL_TOOL": "1"
   },
   "permissions": {
     "allow": [
@@ -45,14 +42,21 @@
   },
   "language": "english",
   "sandbox": {
-    "enabled": false,
+    "enabled": true,
     "autoAllowBashIfSandboxed": true
   },
   "spinnerTipsEnabled": false,
   "alwaysThinkingEnabled": true,
+  "effortLevel": "xhigh",
   "autoUpdatesChannel": "latest",
   "plansDirectory": "./docs/plans",
   "prefersReducedMotion": true,
+  "theme": "dark-ansi",
+  "verbose": true,
   "showTurnDuration": true,
-  "terminalProgressBarEnabled": false
+  "terminalProgressBarEnabled": true,
+  "remoteControlAtStartup": true,
+  "agentPushNotifEnabled": true,
+  "voiceEnabled": true,
+  "tui": "fullscreen"
 }
