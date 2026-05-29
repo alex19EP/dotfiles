@@ -13,9 +13,13 @@
     "deny": [
       "Read(.env*)",
       "Bash(rm -rf:*)"
-    ]
+    ],
+    "defaultMode": "auto"
   },
   "enableAllProjectMcpServers": true,
+  "worktree": {
+    "baseRef": "head"
+  },
   "enabledPlugins": {
     "context7@claude-plugins-official": true,
     "feature-dev@claude-plugins-official": true,
@@ -38,7 +42,8 @@
     "code-review@claude-plugins-official": true,
     "code-simplifier@claude-plugins-official": true,
     "pr-review-toolkit@claude-plugins-official": true,
-    "skill-creator@claude-plugins-official": true
+    "skill-creator@claude-plugins-official": true,
+    "security-guidance@claude-plugins-official": true
   },
   "language": "english",
   "sandbox": {
@@ -50,13 +55,17 @@
   "effortLevel": "xhigh",
   "autoUpdatesChannel": "latest",
   "plansDirectory": "./docs/plans",
+  "tui": "fullscreen",
   "prefersReducedMotion": true,
-  "theme": "dark-ansi",
+  "theme": "auto",
+  "editorMode": "normal",
   "verbose": true,
+  "autoScrollEnabled": true,
   "showTurnDuration": true,
   "terminalProgressBarEnabled": true,
-  "remoteControlAtStartup": true,
+  "teammateMode": "auto",
+  "remoteControlAtStartup": false,
   "agentPushNotifEnabled": true,
-  "voiceEnabled": true,
-  "tui": "fullscreen"
+  "skipAutoPermissionPrompt": true,
+  "voiceEnabled": true
 }
