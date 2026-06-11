@@ -7,6 +7,12 @@ allowed_signers
 .ssh/id_ed25519_sk.pub
 {{ end }}
 vscode
+{{- if ne .chezmoi.hostname "alex-pc" }}
+# Dongle->analog audio mirror: hardcodes node names specific to alex-pc's
+# hardware (the Audeze Maxwell USB dongle and the onboard codec at PCI 7c:00.6).
+.config/wireplumber/wireplumber.conf.d/99-dongle-mirror.conf
+.local/share/wireplumber/scripts/mirror-dongle-to-analog.lua
+{{ end }}
 {{- if eq .chezmoi.os "windows" }}
 # Windows NTFS junction points (unsupported file type)
 Шаблоны
