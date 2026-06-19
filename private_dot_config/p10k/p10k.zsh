@@ -25,6 +25,9 @@
   # restarting zsh. Edit ~/.p10k.zsh and type `source ~/.p10k.zsh`.
   unset -m '(POWERLEVEL9K_*|DEFAULT_USER)~POWERLEVEL9K_GITSTATUS_DIR'
 
+  # Emit OSC 133 prompt marks so tmux next-prompt/previous-prompt can jump between prompts.
+  typeset -g POWERLEVEL9K_TERM_SHELL_INTEGRATION=true
+
   # Zsh >= 5.1 is required.
   autoload -Uz is-at-least && is-at-least 5.1 || return
 

@@ -43,6 +43,12 @@ bind c new-window -c "#{pane_current_path}"
 # url-scan
 bind-key u capture-pane \; save-buffer /tmp/tmux-buffer \; new-window -n "url-scan" '$SHELL -c "urlscan < /tmp/tmux-buffer"'
 
+# prompt jump
+bind-key -T copy-mode-vi M-PageUp   send-keys -X previous-prompt
+bind-key -T copy-mode-vi M-PageDown send-keys -X next-prompt
+bind-key -T copy-mode    M-PageUp   send-keys -X previous-prompt
+bind-key -T copy-mode    M-PageDown send-keys -X next-prompt
+
 set-option -g @plugin 'tmux-plugins/tpm'
 set-option -g @plugin 'tmux-plugins/tmux-sensible'
 set-option -g @plugin 'tmux-plugins/tmux-open'
