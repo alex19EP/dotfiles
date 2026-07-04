@@ -2,12 +2,7 @@
   "env": {
     "ENABLE_TOOL_SEARCH": "auto:5",
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
-    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "85",
     "CLAUDE_CODE_USE_POWERSHELL_TOOL": "1"
-  },
-  "attribution": {
-    "commit": "Co-Authored-By: Claude <noreply@anthropic.com>",
-    "pr": ""
   },
   "permissions": {
     "allow": [
@@ -51,8 +46,9 @@
     "code-simplifier@claude-plugins-official": true,
     "pr-review-toolkit@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": true,
-    "zig-lsp@zircote-lsp": true,
-    "security-guidance@claude-plugins-official": true
+    "chrome-devtools-mcp@claude-plugins-official": true,
+    "remember@claude-plugins-official": true,
+    "discord@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "zircote-lsp": {
@@ -75,6 +71,7 @@
   "tui": "fullscreen",
   "prefersReducedMotion": true,
   "showThinkingSummaries": true,
+  "skipWorkflowUsageWarning": true,
   "theme": "auto",
   "editorMode": "normal",
   "verbose": true,
@@ -86,6 +83,5 @@
   "remoteControlAtStartup": false,
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
-  "voiceEnabled": true,
-  "skipWorkflowUsageWarning": true
+  "voiceEnabled": true
 }
