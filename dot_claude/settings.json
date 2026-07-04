@@ -4,6 +4,9 @@
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
     "CLAUDE_CODE_USE_POWERSHELL_TOOL": "1"
   },
+  "network": {
+    "allowAllUnixSockets": true
+  },
   "permissions": {
     "allow": [
       "Bash(git:*)",
@@ -31,11 +34,7 @@
     "csharp-lsp@claude-plugins-official": true,
     "lua-lsp@claude-plugins-official": true,
     "rust-analyzer-lsp@claude-plugins-official": true,
-    "superpowers@claude-plugins-official": false,
-    "serena@claude-plugins-official": false,
-    "ralph-loop@claude-plugins-official": false,
     "pyright-lsp@claude-plugins-official": true,
-    "hookify@claude-plugins-official": false,
     "jdtls-lsp@claude-plugins-official": true,
     "claude-code-setup@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
@@ -46,6 +45,7 @@
     "code-simplifier@claude-plugins-official": true,
     "pr-review-toolkit@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": true,
+    "zig-lsp@zircote-lsp": true
     "chrome-devtools-mcp@claude-plugins-official": true,
     "remember@claude-plugins-official": true,
     "discord@claude-plugins-official": true
