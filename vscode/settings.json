@@ -104,7 +104,7 @@
 		"default": "right",
 		"jupyter-notebook": "left"
 	},
-	"extensions.autoUpdate": "onlyEnabledExtensions",
+	"extensions.autoUpdate": "on",
 	"redhat.telemetry.enabled": true,
 	"webview.experimental.useIframes": true,
 	"files.associations": {
