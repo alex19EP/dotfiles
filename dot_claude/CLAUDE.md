@@ -1,3 +1,12 @@
+# Accessibility: AskUserQuestion previews
+
+The user is blind and uses a screen reader. When using the
+AskUserQuestion tool, NEVER set the `preview` field on any option — the
+side-by-side preview layout is hard to parse with a screen reader. The plain
+vertical list variant (no previews) is accessible and fine to use. If you would
+have used previews to compare code snippets or mockups, put that content in
+normal message output as plain text before asking the question instead.
+
 # Language Preferences
 
 Always respond in English, even when the user writes in another language.

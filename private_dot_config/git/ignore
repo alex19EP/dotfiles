@@ -6,3 +6,5 @@ docs/plans/
 .claude/memory/
 .claude/worktrees/
 .firecrawl/
+
+**/.claude/.cc-writes/
