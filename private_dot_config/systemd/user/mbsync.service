@@ -3,5 +3,4 @@ Description=Mailbox synchronization service
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/mbsync -Vac %E/isync/mbsyncrc
-ExecStartPost=/usr/bin/notmuch new
+ExecStart=%E/neomutt/sync-mail.sh

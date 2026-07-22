@@ -6,5 +6,3 @@ set trash = "+[Gmail]/Trash"
 set signature = $my_cfgdir/accounts/general.signature
 
 set from = aarnaarn2@gmail.com
-alternates aarnaarn2@gmail.com
-unset crypt_autosign

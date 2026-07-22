@@ -7,5 +7,3 @@ set signature = $my_cfgdir/accounts/general.signature
 
 set from = email@alex19ep.me
 set use_from = yes
-alternates email@alex19ep.me
-set crypt_autosign = yes

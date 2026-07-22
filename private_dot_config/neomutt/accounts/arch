@@ -7,5 +7,3 @@ set signature = $my_cfgdir/accounts/arch.signature
 
 set from = alex19ep@archlinux.org
 set use_from = yes
-alternates alex19ep@archlinux.org
-set crypt_autosign = yes

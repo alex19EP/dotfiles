@@ -18,6 +18,9 @@ set pager_context = 1
 set realname = "Alexander Epaneshnikov"
 set use_from = yes
 set envelope_from = yes
+# pick reply From by which alternate the mail was addressed to (works in vfolders too)
+set reverse_name = yes
+alternates aarnaarn2@gmail.com email@alex19ep.me alex19ep@archlinux.org
 set fast_reply = yes
 set include = yes
 set abort_unmodified = no
@@ -43,9 +46,14 @@ bind index,pager \Cf vfolder-from-query
 unbind index,pager D
 bind index,pager D purge-message
 macro index,pager \cv "<view-attachments><search>html<enter><view-mailcap><exit>"
-macro index S "<shell-escape>mbsync -ac ~/.config/isync/mbsyncrc<enter>" "run mbsync to sync all mail"
+macro index S "<sync-mailbox><shell-escape>$my_cfgdir/sync-mail.sh<enter>" "move trashed mail, then mbsync and notmuch new"
 macro index,pager \cb "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
 macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+
+# sign by identity, not by folder: default off, on for personal/arch
+send-hook . 'unset crypt_autosign'
+send-hook '~f email@alex19ep\.me' 'set crypt_autosign'
+send-hook '~f alex19ep@archlinux\.org' 'set crypt_autosign'
 
 # gmail
 folder-hook gmail/* source $my_cfgdir/accounts/gmail
@@ -63,3 +71,11 @@ macro index,pager <f4> '<sync-mailbox><enter-command>source $my_cfgdir/accounts/
 # admin
 folder-hook admin/* source $my_cfgdir/accounts/admin
 macro index,pager <f6> '<sync-mailbox><enter-command>source $my_cfgdir/accounts/admin<enter><change-folder>!<enter>'
+
+# notmuch virtual folders (ctrl-f): use gmail account settings (identity etc.)
+# kept last so it wins over accidental regex matches of the hooks above against the query text
+# in vfolders 'd' tags the message deleted instead of touching files;
+# sync-mail.sh later moves tagged mail to its own account's trash
+folder-hook . 'bind index,pager d delete-message; bind index,pager u undelete-message'
+folder-hook 'notmuch://' source $my_cfgdir/accounts/gmail
+folder-hook 'notmuch://' 'macro index,pager d "<modify-labels-then-hide>+deleted -inbox -unread<enter>"; macro index,pager u "<modify-labels>-deleted<enter>"'

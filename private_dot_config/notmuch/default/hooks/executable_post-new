@@ -1,0 +1,10 @@
+#!/usr/bin/sh
+
+/usr/bin/afew -v --tag --new --notmuch-config=$HOME/.config/notmuch/default/config
+
+# auto-clean trashed mail: tag deleted (hides it from searches via
+# search.exclude_tags), drop it from inbox, and mark it read
+notmuch tag +deleted -inbox -unread -- '(folder:"gmail/[Gmail]/Trash" or folder:arch/Trash or folder:personal/Trash or folder:admin/Trash) and (tag:inbox or tag:unread or not tag:deleted)'
+
+# safety net: anything tagged deleted anywhere should not stay unread
+notmuch tag -unread -- 'tag:deleted and tag:unread'
