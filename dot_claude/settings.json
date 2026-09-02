@@ -4,9 +4,6 @@
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
     "CLAUDE_CODE_USE_POWERSHELL_TOOL": "1"
   },
-  "network": {
-    "allowAllUnixSockets": true
-  },
   "permissions": {
     "allow": [
       "Bash(git:*)",
@@ -63,6 +60,7 @@
     "enabled": true,
     "autoAllowBashIfSandboxed": true
   },
+  "feedbackDrafts": "notify",
   "spinnerTipsEnabled": false,
   "alwaysThinkingEnabled": true,
   "effortLevel": "xhigh",
@@ -74,8 +72,9 @@
   "skipWorkflowUsageWarning": true,
   "theme": "auto",
   "editorMode": "normal",
-  "verbose": true,
+  "verbose": false,
   "preferredNotifChannel": "terminal_bell",
+  "switchModelsOnFlag": false,
   "autoScrollEnabled": true,
   "showTurnDuration": true,
   "terminalProgressBarEnabled": true,
@@ -83,5 +82,9 @@
   "remoteControlAtStartup": false,
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
-  "voiceEnabled": true
+  "voiceEnabled": true,
+  "network": {
+    "allowAllUnixSockets": true
+  },
+  "crossSessionInbound": "accept"
 }
