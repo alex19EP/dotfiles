@@ -86,5 +86,13 @@
   "network": {
     "allowAllUnixSockets": true
   },
-  "crossSessionInbound": "accept"
+  "crossSessionInbound": "accept",
+  "statusLine": {
+    "type": "command",
+{{- if eq .chezmoi.os "windows" }}
+    "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"{{ .chezmoi.homeDir | replace "\\" "/" }}/.claude/statusline.ps1\""
+{{- else }}
+    "command": "{{ .chezmoi.homeDir }}/.claude/statusline.sh"
+{{- end }}
+  }
 }
