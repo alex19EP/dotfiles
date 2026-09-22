@@ -1,13 +1,25 @@
 {{- /* chezmoi:modify-template */ -}}
-{{- /* Keep project trust local while managing all other settings. */ -}}
+{{- /* Keep project trust and model onboarding state local. */ -}}
 {{- $existing := fromToml .chezmoi.stdin -}}
-{{- $desired := fromToml (includeTemplate "codex-config" .) -}}
+{{- $managed := includeTemplate "codex-config" . -}}
+{{- $desired := fromToml $managed -}}
 {{- if hasKey $existing "projects" -}}
 {{- $_ := set $desired "projects" (get $existing "projects") -}}
+{{- end -}}
+{{- $existingTui := get $existing "tui" | default dict -}}
+{{- if hasKey $existingTui "model_availability_nux" -}}
+{{- $_ := set (get $desired "tui") "model_availability_nux" (get $existingTui "model_availability_nux") -}}
 {{- end -}}
 {{- /* Avoid formatting-only diffs when Codex rewrites the config. */ -}}
 {{- if eq (toJson $existing) (toJson $desired) -}}
 {{ .chezmoi.stdin -}}
 {{- else -}}
-{{ $desired | toToml -}}
+{{- /* Keep shared settings exactly as authored; serialize only local state. */ -}}
+{{ $managed -}}
+{{- if hasKey $existingTui "model_availability_nux" -}}
+{{ printf "\n[tui.model_availability_nux]\n%s" (toToml (get $existingTui "model_availability_nux")) -}}
+{{- end -}}
+{{- if hasKey $existing "projects" -}}
+{{ printf "\n%s" (toToml (dict "projects" (get $existing "projects"))) -}}
+{{- end -}}
 {{- end -}}
