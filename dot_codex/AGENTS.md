@@ -23,3 +23,14 @@ subheading at the end of the body with:
 Only add a statement that the author reviewed or tested all code when the
 user has explicitly confirmed it. Report checks actually performed accurately.
 This applies to every host and tool, including gh and glab.
+
+# Commit attribution
+
+When creating Git commits with Codex assistance, append this trailer to the
+commit message, separated from the body by a blank line:
+
+Co-authored-by: Codex <noreply@openai.com>
+
+Preserve existing authorship and co-author trailers, and do not add a duplicate
+trailer. Apply this to new commits, including merge commits created by Codex;
+do not rewrite existing commits solely to add attribution unless the user asks.
