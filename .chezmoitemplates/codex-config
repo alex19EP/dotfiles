@@ -1,0 +1,44 @@
+model = "gpt-6-astra"
+model_reasoning_effort = "high"
+approval_policy = "on-request"
+approvals_reviewer = "auto_review"
+sandbox_mode = "workspace-write"
+web_search = "disabled"
+project_doc_fallback_filenames = ["CLAUDE.md"]
+
+[windows]
+sandbox = "elevated"
+
+[sandbox_workspace_write]
+network_access = true
+
+[shell_environment_policy]
+inherit = "all"
+experimental_use_profile = true
+
+[mcp_servers.context7]
+args = [
+    "-y",
+    "@upstash/context7-mcp",
+]
+command = "npx"
+startup_timeout_ms = 20000
+
+{{ if eq .chezmoi.os "windows" -}}
+[mcp_servers.ghidra]
+url = "http://127.0.0.1:8080/mcp"
+
+{{ end -}}
+[tui]
+animations = false
+notification_method = "auto"
+notifications = true
+status_line = ["context-used", "current-dir", "pull-request-number", "thread-name", "five-hour-limit", "weekly-limit", "model-with-reasoning"]
+status_line_use_colors = false
+terminal_title = ["activity", "thread-name", "project-name"]
+
+[features]
+prevent_idle_sleep = true
+worktrees = true
+realtime_conversation = true
+memories = true

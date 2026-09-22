@@ -1,0 +1,13 @@
+{{- /* chezmoi:modify-template */ -}}
+{{- /* Keep project trust local while managing all other settings. */ -}}
+{{- $existing := fromToml .chezmoi.stdin -}}
+{{- $desired := fromToml (includeTemplate "codex-config" .) -}}
+{{- if hasKey $existing "projects" -}}
+{{- $_ := set $desired "projects" (get $existing "projects") -}}
+{{- end -}}
+{{- /* Avoid formatting-only diffs when Codex rewrites the config. */ -}}
+{{- if eq (toJson $existing) (toJson $desired) -}}
+{{ .chezmoi.stdin -}}
+{{- else -}}
+{{ $desired | toToml -}}
+{{- end -}}
