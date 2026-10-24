@@ -1,0 +1,52 @@
+#!/bin/sh
+set -eu
+
+case ${1:-} in
+    '') dry_run=0 ;;
+    --dry-run) dry_run=1 ;;
+    *) printf 'Usage: %s [--dry-run]\n' "$0" >&2; exit 2 ;;
+esac
+
+src=${XDG_CACHE_HOME:-$HOME/.cache}/makepkg/src
+[ -d "$src" ] || exit 0
+
+# A build may be using SRCDEST. Retry on the next daily timer run.
+if pgrep -u "$(id -u)" -f '(^|/)(makepkg|makechrootpkg)([[:space:]]|$)' >/dev/null; then
+    printf 'makepkg is running; source cleanup skipped\n' >&2
+    exit 0
+fi
+
+for entry in "$src"/* "$src"/.[!.]* "$src"/..?*; do
+    [ -e "$entry" ] || [ -L "$entry" ] || continue
+    [ -L "$entry" ] && continue
+    [ -f "$entry" ] || [ -d "$entry" ] || continue
+    [ -d "$entry" ] && mountpoint -q "$entry" && continue
+
+    # Scanning directories can update their atime, so use directory mtime.
+    # File atime also records reads of downloaded archives and Git objects.
+    recent=$(find "$entry" -xdev \( \( -type f -a \( -atime -30 -o -mtime -30 \) \) -o \( ! -type f -a -mtime -30 \) \) -print -quit)
+    [ -z "$recent" ] || continue
+
+    # Tmpfiles treats these as patterns or specifiers, so leave them alone.
+    case ${entry##*/} in
+        *'*'*|*'?'*|*'['*|*']'*|*'%'*)
+            printf 'Skipping source with special name: %s\n' "$entry" >&2
+            continue
+            ;;
+    esac
+
+    if [ "$dry_run" -eq 1 ]; then
+        printf 'Would remove inactive source: %s\n' "$entry"
+        continue
+    fi
+
+    if pgrep -u "$(id -u)" -f '(^|/)(makepkg|makechrootpkg)([[:space:]]|$)' >/dev/null; then
+        printf 'makepkg started; remaining cleanup skipped\n' >&2
+        exit 0
+    fi
+
+    # Encode every byte so spaces and control characters stay in one path field.
+    encoded=$(printf '%s' "$entry" | od -An -tx1 -v | tr -d ' \n' | sed 's/../\\x&/g')
+    systemd-tmpfiles --user --remove --inline "R $encoded - - - - -"
+    printf 'Removed inactive source: %s\n' "$entry"
+done

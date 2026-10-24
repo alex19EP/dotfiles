@@ -1,0 +1,6 @@
+[Unit]
+Description=Remove makepkg sources unused for 30 days
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/sh %h/.local/bin/makepkg-src-clean

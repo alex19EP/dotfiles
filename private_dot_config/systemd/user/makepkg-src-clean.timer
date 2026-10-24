@@ -1,0 +1,10 @@
+[Unit]
+Description=Check for unused makepkg sources
+
+[Timer]
+OnCalendar=*-*-* 04:00:00
+Persistent=true
+Unit=makepkg-src-clean.service
+
+[Install]
+WantedBy=timers.target
