@@ -1,0 +1,11 @@
+[Unit]
+Description=Use the Audeze headset mic as default while it is unmuted
+After=pipewire-pulse.socket wireplumber.service
+
+[Service]
+ExecStart=%h/.local/libexec/headset-mic-switch
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,152 @@
+#!/usr/bin/python3 -I
+"""Make the Audeze Maxwell mic the default source while it is unmuted.
+
+The mute state is read from the dongle with the vendor status request that
+HeadsetControl uses (lib/devices/audeze_maxwell.hpp): the reply to command
+01 09 22 carries 0xff while the mic is unmuted and 0x00 while it is muted.
+The mic audio itself is no use for this, since the headset's noise gate sends
+exact digital silence while unmuted too.
+
+While the headset is off, the dongle drops its audio interfaces, so the source
+disappearing is the "off" signal.
+"""
+import fcntl
+import glob
+import json
+import os
+import subprocess
+import sys
+import time
+
+HEADSET = "alsa_input.usb-Audeze_LLC_Audeze_Maxwell_Dongle_"
+DEFAULT_FALLBACK = "alsa_input.usb-audio-technica_AT2020USB_-00.analog-stereo"
+POLL = 1.0  # seconds
+
+MSG_SIZE = 62
+HIDIOCGINPUT = (3 << 30) | (MSG_SIZE << 16) | (ord("H") << 8) | 0x0A
+MUTE_CMD = bytes([0x01, 0x09, 0x22])
+MUTE_REQ = bytes([0x06, 0x08, 0x80, 0x05, 0x5A, 0x04, 0x00, *MUTE_CMD]).ljust(MSG_SIZE, b"\0")
+
+
+def log(msg):
+    print(msg, file=sys.stderr, flush=True)
+
+
+def pactl(*args):
+    return subprocess.run(["pactl", *args], capture_output=True, text=True).stdout
+
+
+def sources():
+    try:
+        return json.loads(pactl("--format=json", "list", "sources"))
+    except json.JSONDecodeError:
+        return []
+
+
+def headset_source():
+    for s in sources():
+        if s["name"].startswith(HEADSET) and s["monitor_source"] == "":
+            return s["name"]
+    return None
+
+
+def label(name):
+    for s in sources():
+        if s["name"] == name:
+            props = s.get("properties", {})
+            return props.get("alsa.card_name") or s.get("description") or name
+    return name
+
+
+def default_source():
+    return pactl("get-default-source").strip()
+
+
+def notify(body):
+    subprocess.run(["notify-send", "--app-name=Headset mic", "--transient",
+                    "--icon=audio-input-microphone", "Microphone", body])
+
+
+def hidraw_node():
+    for uevent in glob.glob("/sys/class/hidraw/*/device/uevent"):
+        with open(uevent) as f:
+            if "HID_ID=0003:00003329:00004B19" in f.read():
+                return "/dev/" + uevent.split("/")[4]
+    return None
+
+
+def mic_muted():
+    """Return True/False from the dongle, or None if it gave no usable answer."""
+    node = hidraw_node()
+    if not node:
+        return None
+    try:
+        fd = os.open(node, os.O_RDWR)
+    except OSError:
+        return None
+    try:
+        # The input report buffer can still hold replies to other commands
+        # (they lag a request behind), so retry until one echoes ours.
+        for _ in range(6):
+            os.write(fd, MUTE_REQ)
+            time.sleep(0.06)
+            buf = bytearray(MSG_SIZE)
+            buf[0] = 0x07
+            fcntl.ioctl(fd, HIDIOCGINPUT, buf)
+            if buf[7:10] == MUTE_CMD:
+                return buf[12] != 0xFF
+    except OSError:
+        pass
+    finally:
+        os.close(fd)
+    return None
+
+
+class Switcher:
+    def __init__(self):
+        self.fallback = DEFAULT_FALLBACK
+        self.active = None  # None until the first decision after the headset appears
+
+    def activate(self, src):
+        if self.active:
+            return
+        self.active = True
+        current = default_source()
+        if current == src:
+            return
+        if current and not current.startswith(HEADSET):
+            self.fallback = current
+        pactl("set-default-source", src)
+        log(f"switched to {src}")
+        notify(f"Using {label(src)}")
+
+    def deactivate(self, reason):
+        was_active = self.active
+        self.active = False
+        if not default_source().startswith(HEADSET) and not was_active:
+            return
+        # Set it explicitly even when the headset vanished, so WirePlumber does
+        # not remember the headset as the configured default and jump back to
+        # it the moment the headset reappears muted.
+        pactl("set-default-source", self.fallback)
+        log(f"switched to {self.fallback} ({reason})")
+        notify(f"{reason}, using {label(self.fallback)}")
+
+    def run(self):
+        while True:
+            src = headset_source()
+            if not src:
+                if self.active:
+                    self.deactivate("Headset off")
+                self.active = None
+            else:
+                muted = mic_muted()
+                if muted is False:
+                    self.activate(src)
+                elif muted and self.active is not False:
+                    self.deactivate("Headset mic muted")
+            time.sleep(POLL)
+
+
+if __name__ == "__main__":
+    Switcher().run()
