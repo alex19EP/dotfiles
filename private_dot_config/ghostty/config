@@ -6,3 +6,7 @@ window-height = 100
 window-width = 160
 font-size = 6
 gtk-single-instance = true
+bell-features = system
+
+keybind = ctrl+shift+space=start_selection
+keybind = ctrl+shift+m=enter_caret_mode
