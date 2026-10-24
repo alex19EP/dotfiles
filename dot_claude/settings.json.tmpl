@@ -2,7 +2,10 @@
   "env": {
     "ENABLE_TOOL_SEARCH": "auto:5",
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
-    "CLAUDE_CODE_USE_POWERSHELL_TOOL": "1"
+{{- if eq .chezmoi.os "windows" }}
+    "CLAUDE_CODE_USE_POWERSHELL_TOOL": "1",
+{{- end }}
+    "CLAUDE_CODE_PLUGIN_DIRS": "~/.local/share/claude-mods/ask-preview-text"
   },
   "permissions": {
     "allow": [
@@ -38,14 +41,9 @@
     "typescript-lsp@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true,
     "firecrawl@claude-plugins-official": true,
-    "code-review@claude-plugins-official": true,
-    "code-simplifier@claude-plugins-official": true,
     "pr-review-toolkit@claude-plugins-official": true,
-    "skill-creator@claude-plugins-official": true,
     "zig-lsp@zircote-lsp": true,
-    "chrome-devtools-mcp@claude-plugins-official": true,
-    "remember@claude-plugins-official": true,
-    "discord@claude-plugins-official": true
+    "cc-plugin-you-should-know@builtin": true
   },
   "extraKnownMarketplaces": {
     "zircote-lsp": {
@@ -64,6 +62,11 @@
   "spinnerTipsEnabled": false,
   "alwaysThinkingEnabled": true,
   "effortLevel": "xhigh",
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "high"
+    }
+  },
   "autoUpdatesChannel": "latest",
   "plansDirectory": "./docs/plans",
   "tui": "fullscreen",

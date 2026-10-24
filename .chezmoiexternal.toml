@@ -8,3 +8,8 @@
     type = "git-repo"
     url = "https://github.com/tmux-plugins/tpm"
     refreshPeriod = "100h"
+# Claude Code mod, loaded through CLAUDE_CODE_PLUGIN_DIRS in ~/.claude/settings.json
+['.local/share/claude-mods/ask-preview-text']
+    type = "git-repo"
+    url = "https://github.com/alex19EP/claude-ask-preview-text"
+    refreshPeriod = "100h"
