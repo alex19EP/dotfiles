@@ -50,6 +50,27 @@ bind-key -T copy-mode-vi M-PageDown send-keys -X next-prompt
 bind-key -T copy-mode    M-PageUp   send-keys -X previous-prompt
 bind-key -T copy-mode    M-PageDown send-keys -X next-prompt
 
+# Handy defaults, kept explicit so they hold even before plugins are installed.
+set-option -g history-limit 50000
+set-option -g display-time 4000
+set-option -g status-interval 5
+bind-key R source-file ~/.config/tmux/tmux.conf \; display-message "tmux.conf reloaded"
+
+# NOTE (2026-09-12, Windows/MSYS2): TPM was temporarily disabled here after it
+# appeared to fork bomb this host (~1400 tmux + ~2900 bash processes, free RAM
+# down to 641 MB of 32 GB; tmux "launched, hung, accepted no input").
+#
+# TPM was only the symptom. The real cause was AdGuard for Windows routing
+# unknown apps through its network filter. Cygwin/MSYS2 emulates AF_UNIX over
+# loopback TCP with a secret handshake, so that routing broke every tmux
+# client->server connect ("accept from unauthorized server" / EFAULT). Each
+# failed connect made TPM's `tmux start-server` spawn yet another server, which
+# re-sourced this file and ran tpm again -> exponential recursion.
+#
+# With AdGuard no longer filtering those binaries, tmux connects reliably
+# (10/10) and TPM loads normally, so it is re-enabled for every OS.
+# If tmux ever hangs like that again, suspect AdGuard's app filtering first,
+# not this config: check `tmux ls` against a running server.
 set-option -g @plugin 'tmux-plugins/tpm'
 set-option -g @plugin 'tmux-plugins/tmux-sensible'
 set-option -g @plugin 'tmux-plugins/tmux-open'
