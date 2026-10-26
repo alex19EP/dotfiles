@@ -2,6 +2,8 @@ readme.md
 License
 install.sh
 allowed_signers
+# Claude Code plans (plansDirectory: ./docs/plans) created while working in the source dir
+docs
 {{- if (or (not .personal) (.headless)) }}
 .ssh/id_ed25519_sk
 .ssh/id_ed25519_sk.pub

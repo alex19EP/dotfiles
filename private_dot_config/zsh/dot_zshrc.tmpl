@@ -19,6 +19,14 @@ fi
 
 # initialize plugins statically with ${ZDOTDIR:-~}/.zsh_plugins.txt
 antidote load
+{{- if eq .chezmoi.os "windows" }}
+
+# zoxide 0.10.0 (Windows build) emits `cygpath -w "\builtin pwd -L"` without $(...),
+# so `z` fails with "not a directory: E:\builtin pwd -L". Redefine it correctly.
+if (( $+functions[__zoxide_pwd] )); then
+    function __zoxide_pwd() { \command cygpath -w "$(\builtin pwd -L)" }
+fi
+{{- end }}
 
 # aliases
 [ -f "${ZDOTDIR}/aliases" ] && source "${ZDOTDIR}/aliases" ||:
@@ -96,3 +104,18 @@ if (( $+commands[atuin] )); then
 fi
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.config/p10k/p10k.zsh ]] || source ~/.config/p10k/p10k.zsh
+{{- if eq .chezmoi.os "windows" }}
+
+# Codex standalone: apply after MSYS2's login profile rebuilds PATH.
+if [[ -n "$MSYSTEM" && -d "$HOME/AppData/Local/Programs/OpenAI/Codex/bin" ]]; then
+    typeset -U path
+    path=("$HOME/AppData/Local/Programs/OpenAI/Codex/bin" $path)
+    export PATH
+fi
+
+# Use the Windows user temp directory for Codex sandbox setup.
+codex() {
+    local codex_temp="$(cygpath -w "$LOCALAPPDATA/Temp")"
+    TEMP="$codex_temp" TMP="$codex_temp" command codex "$@"
+}
+{{- end }}

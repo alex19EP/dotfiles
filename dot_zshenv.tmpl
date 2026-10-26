@@ -73,3 +73,10 @@ export PATH="$HOME/go/bin:$PATH"
 export DEBEMAIL={{ .email | quote }}
 export DEBFULLNAME={{ .name | quote }}
 {{- end }}
+{{- if eq .chezmoi.os "windows" }}
+
+# Codex standalone (MSYS2)
+if [[ -n "$MSYSTEM" && -d "$HOME/AppData/Local/Programs/OpenAI/Codex/bin" ]]; then
+    export PATH="$HOME/AppData/Local/Programs/OpenAI/Codex/bin:$PATH"
+fi
+{{- end }}

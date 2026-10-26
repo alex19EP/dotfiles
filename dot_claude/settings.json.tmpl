@@ -32,7 +32,15 @@
     "commit-commands@claude-plugins-official": true,
     "clangd-lsp@claude-plugins-official": true,
     "csharp-lsp@claude-plugins-official": true,
+{{- /* Machine-local directory marketplaces, only wired up where they exist */}}
+{{- $localPlugins := joinPath .chezmoi.homeDir ".claude" "local-plugins" }}
+{{- $waLocal := joinPath .chezmoi.homeDir ".claude" "local-marketplaces" "wa-local" }}
+{{- if stat $localPlugins }}
+    "lua-lsp@claude-plugins-official": false,
+    "emmylua-lsp@local-plugins": true,
+{{- else }}
     "lua-lsp@claude-plugins-official": true,
+{{- end }}
     "rust-analyzer-lsp@claude-plugins-official": true,
     "pyright-lsp@claude-plugins-official": true,
     "jdtls-lsp@claude-plugins-official": true,
@@ -51,6 +59,22 @@
         "source": "github",
         "repo": "zircote/lsp-marketplace"
       }
+{{- if stat $waLocal }}
+    },
+    "wa-local": {
+      "source": {
+        "source": "directory",
+        "path": {{ $waLocal | toJson }}
+      }
+{{- end }}
+{{- if stat $localPlugins }}
+    },
+    "local-plugins": {
+      "source": {
+        "source": "directory",
+        "path": {{ $localPlugins | toJson }}
+      }
+{{- end }}
     }
   },
   "language": "english",
