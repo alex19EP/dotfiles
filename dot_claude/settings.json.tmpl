@@ -26,6 +26,14 @@
   "worktree": {
     "baseRef": "head"
   },
+  "statusLine": {
+    "type": "command",
+{{- if eq .chezmoi.os "windows" }}
+    "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"{{ .chezmoi.homeDir | replace "\\" "/" }}/.claude/statusline.ps1\""
+{{- else }}
+    "command": "{{ .chezmoi.homeDir }}/.claude/statusline.sh"
+{{- end }}
+  },
   "enabledPlugins": {
     "context7@claude-plugins-official": true,
     "feature-dev@claude-plugins-official": true,
@@ -51,7 +59,9 @@
     "firecrawl@claude-plugins-official": true,
     "pr-review-toolkit@claude-plugins-official": true,
     "zig-lsp@zircote-lsp": true,
-    "cc-plugin-you-should-know@builtin": true
+    "cc-plugin-you-should-know@builtin": true,
+    "cc-plugin-diff@builtin": false,
+    "cc-plugin-telemetry@builtin": false
   },
   "extraKnownMarketplaces": {
     "zircote-lsp": {
@@ -91,6 +101,13 @@
       "effortLevel": "high"
     }
   },
+  "pluginConfigs": {
+    "cc-plugin-agents-md@builtin": {
+      "options": {
+        "instructionFiles": "claude-md-and-agents-md"
+      }
+    }
+  },
   "autoUpdatesChannel": "latest",
   "plansDirectory": "./docs/plans",
   "tui": "fullscreen",
@@ -107,19 +124,11 @@
   "terminalProgressBarEnabled": true,
   "teammateMode": "auto",
   "remoteControlAtStartup": false,
+  "crossSessionInbound": "accept",
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
   "voiceEnabled": true,
   "network": {
     "allowAllUnixSockets": true
-  },
-  "crossSessionInbound": "accept",
-  "statusLine": {
-    "type": "command",
-{{- if eq .chezmoi.os "windows" }}
-    "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"{{ .chezmoi.homeDir | replace "\\" "/" }}/.claude/statusline.ps1\""
-{{- else }}
-    "command": "{{ .chezmoi.homeDir }}/.claude/statusline.sh"
-{{- end }}
   }
 }
