@@ -3,6 +3,17 @@ alias trans=' deepl text'
 alias engtr='trans --to en-us'
 {{- end }}
 alias code={{ template "vscode" }}
-alias "L"="| less"
+alias -g L='| less'
+alias mkdir='mkdir -pv'
+{{- if ne .chezmoi.os "windows" }}
+# from ohmyzsh systemadmin
+alias ping='ping -c 5'
+alias ping6='ping6 -c 5'
+alias psmem='ps -e -orss=,args= | sort -b -k1 -nr'
+alias psmem10='ps -e -orss=,args= | sort -b -k1 -nr | head -n 10'
+alias pszombie="ps -eo user,pid,ppid,state,comm | awk '\$4==\"Z\"'"
+alias pscpu='ps -e -o pcpu,cpu,nice,state,cputime,args | sort -k1,1n -nr'
+alias pscpu10='ps -e -o pcpu,cpu,nice,state,cputime,args | sort -k1,1n -nr | head -n 10'
+{{- end }}
 {{ if lookPath "paru" }}alias "pa"="paru"{{ end }}
 {{ if lookPath "pkgctl" }}alias "pkc"="pkgctl"{{ end }}

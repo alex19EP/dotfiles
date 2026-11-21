@@ -18,12 +18,11 @@ ohmyzsh/ohmyzsh path:plugins/extract
 ohmyzsh/ohmyzsh path:plugins/fzf
 ohmyzsh/ohmyzsh path:plugins/git
 ohmyzsh/ohmyzsh path:plugins/rbw
-ohmyzsh/ohmyzsh path:plugins/systemadmin
 ohmyzsh/ohmyzsh path:plugins/tldr
 ohmyzsh/ohmyzsh path:plugins/vscode
 ohmyzsh/ohmyzsh path:plugins/zoxide
 mass8326/zsh-chezmoi
 mellbourn/zabb
 amyreese/zsh-take
-akash329d/zsh-alias-finder
+ohmyzsh/ohmyzsh path:plugins/alias-finder
 3v1n0/zsh-bash-completions-fallback
