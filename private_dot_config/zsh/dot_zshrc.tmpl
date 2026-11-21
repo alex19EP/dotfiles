@@ -93,17 +93,34 @@ bindkey '\e\e' prepend-sudo
 zle -N edit-command-line
 bindkey "^X^E" edit-command-line
 
+# Remember whether an alias was expanded on this line (by Space or Enter),
+# so alias-finder doesn't suggest the very alias that was typed.
+_alias_expanded=0
+function _alias_expanded_reset() { _alias_expanded=0 }
+autoload -Uz add-zle-hook-widget
+add-zle-hook-widget line-init _alias_expanded_reset
+
 function expand-alias-and-accept-line() {
   local before=$BUFFER
   zle _expand_alias
-  # Remember whether an alias was just expanded, so alias-finder doesn't
-  # suggest the very alias that was typed.
-  [[ $BUFFER != $before ]] && _alias_expanded=1 || _alias_expanded=0
+  [[ $BUFFER != $before ]] && _alias_expanded=1
   zle accept-line
 }
 
 zle -N expand-alias-and-accept-line
 bindkey '^M' expand-alias-and-accept-line  # Enter
+
+# Space: zephyr's glob-alias expansion, but also note that an alias was used
+if (( $+functions[glob-alias-word] )); then
+  function glob-alias-tracked() {
+    local before=$BUFFER
+    glob-alias-word
+    [[ $BUFFER != $before ]] && _alias_expanded=1
+    zle self-insert
+  }
+  zle -N glob-alias-tracked
+  bindkey ' ' glob-alias-tracked
+fi
 
 # Alias hints (omz alias-finder), skipped when the command came from an alias
 if (( $+functions[alias-finder] )); then
