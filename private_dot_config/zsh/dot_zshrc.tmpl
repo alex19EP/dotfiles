@@ -26,6 +26,11 @@ antidote load
 if (( $+functions[__zoxide_pwd] )); then
     function __zoxide_pwd() { \command cygpath -w "$(\builtin pwd -L)" }
 fi
+
+# zephyr's completion plugin sets path_dirs, which makes every command-name
+# completion stat all files in every $path dir (~10k with the inherited Windows
+# PATH): ~0.5s per pass, several passes per TAB. Must come after antidote load.
+unsetopt path_dirs
 {{- end }}
 
 # aliases
